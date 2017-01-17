@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1484684631 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c.cpp
+	<stdio.h>
+	<stdlib.h>
+	"1x02 Data Structures in C.h"
+
+1484684166 c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c.h
+
+1484684952 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x00_mainmenu.cpp
+	<cstdio>
+	<string.h>
+	"1x02 Data Structures in C.h"
+
+1484684698 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x01_stacks.cpp
+	<cstdio>
+	"1x02 Data Structures in C.h"
+
+1484684720 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x02_infixpostfixnotation.cpp
+	"1x02 Data Structures in C.h"
+	<cstdio>
+	<string.h>
+
+1484684726 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x0z_mylinkedlist.cpp
+	"1x02 Data Structures in C.h"
+	<cstdlib>
+	<cstdio>
+
