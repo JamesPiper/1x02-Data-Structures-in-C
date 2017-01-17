@@ -31,12 +31,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="1x02 Data Structures in C.cpp" />
+		<Unit filename="1x02 Data Structures in C.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="1x02 Data Structures in C.h" />
-		<Unit filename="_0x00_MainMenu.cpp" />
-		<Unit filename="_0x01_Stacks.cpp" />
-		<Unit filename="_0x02_InfixPostfixNotation.cpp" />
-		<Unit filename="_0x0Z_MyLinkedList.cpp" />
+		<Unit filename="_0x00_MainMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_0x01_Stacks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_0x02_InfixPostfixNotation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_0x0Z_MyLinkedList.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
