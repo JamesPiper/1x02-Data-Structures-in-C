@@ -31,14 +31,17 @@
 //
 //==============================================================================
 
-#include <cstdio>
 #include "1x02 Data Structures in C.h"
 
-typedef enum Boolean { False, True } Boolean;
+#include <stdio.h>
+#include <ctype.h>
 
-typedef struct _Stack
-{
-	int top;
+// Moved to main header file (1x02 Data Structures in C.h).
+//typedef enum Boolean { False, True } Boolean;
+
+// Moved to _0x01_Stacks.h
+typedef struct _Stack {
+	int Top;
 	int S[SIZE_OF_ARRAY_STACK];
 } Stack;
 
@@ -60,7 +63,7 @@ void _0x01_Stacks() {
 	Stack TheStack;
 
 	// Initialize top
-	TheStack.top = -1;
+	TheStack.Top = -1;
 
 	do {
 
@@ -70,11 +73,13 @@ void _0x01_Stacks() {
 		printf("\n");
 		printf("Type number + Enter\n");
 		printf("\n");
-		printf("A. Push\n");
-		printf("B. Pop\n");
-		printf("C. Peek\n");
-		printf("D. Display\n");
-		printf("X. Exit\n");
+		printf("A - Push\n");
+		printf("B - Pop\n");
+		printf("C - Peek\n");
+		printf("D - Display\n");
+		printf("\n");
+		printf("X - Exit\n");
+		printf("Z - Return\n");
 		printf("\n");
 		printf("==============================================================================\n");
 		printf("\n");
@@ -82,10 +87,10 @@ void _0x01_Stacks() {
 		printf("\n");
 		printf("Enter choice: ");
 		scanf("%s", &Inputs);
-		Choice = Inputs[0];
+		Choice = tolower(Inputs[0]);
 
 		// Push
-		if (Choice == 'A' || Choice == 'a') {
+		if (Choice == 'a') {
 			printf("\n");
 			printf("------------------------------------------------------------------------------\n");
 			if (IsFull(&TheStack)) {
@@ -95,7 +100,7 @@ void _0x01_Stacks() {
 				printf("Input the data: ");
 				scanf("%d", &Item);
 				Push(&TheStack, Item);
-				printf("%d added at element %d\n", Item, TheStack.top);
+				printf("%d added at element %d\n", Item, TheStack.Top);
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
@@ -103,7 +108,7 @@ void _0x01_Stacks() {
 		}
 
 		// Pop
-		if (Choice == 'B' || Choice == 'b') {
+		if (Choice == 'b') {
 			printf("\n");
 			printf("------------------------------------------------------------------------------\n");
 			if (IsEmpty(&TheStack)) {
@@ -112,7 +117,7 @@ void _0x01_Stacks() {
 			else {
 				Item = Pop(&TheStack);
 				printf("Popped element: %d \n", Item);
-				printf("No of elements left: %d \n", TheStack.top + 1);
+				printf("No of elements left: %d \n", TheStack.Top + 1);
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
@@ -120,7 +125,7 @@ void _0x01_Stacks() {
 		}
 
 		// Peek
-		if (Choice == 'C' || Choice == 'c') {
+		if (Choice == 'c') {
 			printf("\n");
 			printf("------------------------------------------------------------------------------\n");
 			if (IsEmpty(&TheStack)) {
@@ -129,7 +134,7 @@ void _0x01_Stacks() {
 			else {
 				Item = Peek(&TheStack);
 				printf("Peek of element: %d \n", Item);
-				printf("No of elements: %d \n", TheStack.top + 1);
+				printf("No of elements: %d \n", TheStack.Top + 1);
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
@@ -137,7 +142,7 @@ void _0x01_Stacks() {
 		}
 
 		// Display
-		if (Choice == 'D' || Choice == 'd') {
+		if (Choice == 'd') {
 			printf("\n");
 			printf("------------------------------------------------------------------------------\n");
 			if (IsEmpty(&TheStack)) {
@@ -151,21 +156,25 @@ void _0x01_Stacks() {
 			continue;
 		}
 
-		// Exit
-		if (Choice == 'X' || Choice == 'x') {
-			return;
+		// Return to main menu.
+		if (Choice == 'z') {
+			return (0);
 		}
 
+		// Exit
+		if (Choice == 'x') {
+			exit(0);
+		}
 
-	} while (Choice != 'X' && Choice != 'x');
+	} while (Choice != 'x');
 }
 
 static void Push(Stack* Stack, int item) {
-	Stack->S[++Stack->top] = item;
+	Stack->S[++Stack->Top] = item;
 }
 
 static void Display(Stack* Stack) {
-	for (int i = Stack->top; i >= 0; i--)
+	for (int i = Stack->Top; i >= 0; i--)
 		printf("  The %d element is %d\n", i, Stack->S[i]);
 }
 
@@ -175,22 +184,22 @@ static int Pop(Stack* Stack) {
 	//return Item;
 
 	//printf("Stack->top is %d\n ", Stack->top);
-	return Stack->S[Stack->top--];
+	return Stack->S[Stack->Top--];
 }
 
 static int Peek(Stack* Stack) {
-	return Stack->S[Stack->top];
+	return Stack->S[Stack->Top];
 }
 
 static Boolean IsEmpty(Stack* Stack) {
-	if (Stack->top == -1)
+	if (Stack->Top == -1)
 		return True;
 	else
 		return False;
 }
 
 static Boolean IsFull(Stack* Stack) {
-	if (Stack->top == SIZE_OF_ARRAY_STACK - 1)
+	if (Stack->Top == SIZE_OF_ARRAY_STACK - 1)
 		return True;
 	else
  		return False;

@@ -33,15 +33,17 @@
 //==============================================================================
 
 #include "1x02 Data Structures in C.h"
+//#include "_0x01_Stacks.h"
 
-#include <cstdio>
+#include <stdio.h>
 #include <string.h>
 
-typedef enum Boolean { False, True } Boolean;
+// Moved to main header file (1x02 Data Structures in C.h).
+//typedef enum Boolean { False, True } Boolean;
 
-typedef struct Stack
-{
-	int top;
+// Moved to _0x01_Stacks.h
+typedef struct Stack {
+	int Top;
 	char S[SIZE_OF_ARRAY_STACK];
 } Stack;
 
@@ -60,7 +62,7 @@ void _0x02_InfixPostfixNotation() {
 
 	char Infix[SIZE_OF_ARRAY_STACK];
 	Stack aStack, Postfix;
-	aStack.top = Postfix.top = -1;
+	aStack.Top = Postfix.Top = -1;
 
 	printf("Input the infix expression: ");
 	//gets(Infix);
@@ -133,15 +135,15 @@ static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
 }
 
 static void Push(Stack* Stack, char item) {
-	Stack->S[++Stack->top] = item;
+	Stack->S[++Stack->Top] = item;
 }
 
 static char Pop(Stack* Stack) {
-	return Stack->S[Stack->top--];
+	return Stack->S[Stack->Top--];
 }
 
 static char Peek(Stack* Stack) {
-	return Stack->S[Stack->top];
+	return Stack->S[Stack->Top];
 }
 
 static int Priority(char item) {

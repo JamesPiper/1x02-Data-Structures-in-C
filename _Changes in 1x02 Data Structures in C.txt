@@ -1,0 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////////////
+// 2017.01.19 by James Piper, james@jamespiper.com
+//
+// Changes to this project: 1x02 Data Structures in C
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+2017.01.19
+· Moving common code used in _0x01_Stacks() to a header file.
+· General code cleaning and housekeeping.
+· Adding code for Postfix Expression evaluation.
+
+

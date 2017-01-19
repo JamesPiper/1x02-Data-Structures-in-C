@@ -41,12 +41,17 @@
 		<Unit filename="_0x01_Stacks.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="_0x01_Stacks.h" />
 		<Unit filename="_0x02_InfixPostfixNotation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_0x03_EvaluatePostFixExpression.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_0x0Z_MyLinkedList.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="_Changes in 1x02 Data Structures in C.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

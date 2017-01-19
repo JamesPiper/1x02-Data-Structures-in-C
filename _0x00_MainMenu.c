@@ -1,4 +1,4 @@
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 // 2017.01.13 by James Piper, james@jamespiper.com
 //
 // Based on book "Data Structures in C" by Yogish Sachdeva
@@ -6,9 +6,9 @@
 // I am typing the code out, not simply 'copy and paste'
 // and changing for style etc.
 //
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 
-#include <cstdio>
+#include <stdio.h>
 #include <string.h>
 #include "1x02 Data Structures in C.h"
 
@@ -28,8 +28,9 @@ void _0x00_MainMenu() {
 		printf("*                                                                            *\n");
 		printf("*   A - Stack (Fixed array)                                                  *\n");
 		printf("*   B - Infix to Postfix Notation                                            *\n");
+		printf("*   C - Evalaute Postfix Expression                                          *\n");
 		printf("*                                                                            *\n");
-		printf("*   Z - Linked List (mine)                                                   *\n");
+		printf("*   Q - Linked List (mine)                                                   *\n");
 		printf("*   X - Exit the program.                                                    *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
@@ -48,19 +49,21 @@ void _0x00_MainMenu() {
 		// fscanf is getting overlow as well, ugh.
 		scanf("%s", &Inputs);
 		printf("User input: %s\n", Inputs);
-
-		strlwr(Inputs);
-		Choice = Inputs[0];
+		Choice = tolower(Inputs[0]);
 		printf("\n");
 
 		if (Choice == 'a')
 			_0x01_Stacks();
 		else if (Choice == 'b')
 			_0x02_InfixPostfixNotation();
-		else if (Choice == 'z')
+		else if (Choice == 'c')
+			_0x03_EvaluatePostFixExpression();
+		else if (Choice == 'q')
 			_0x0Z_MyLinkedList();
 		else if (Choice == 'x')
 			return;
+		else
+			printf("*** Select a choice from those listed. ****\n\n");
 
 	} while (Choice != 'x');
 

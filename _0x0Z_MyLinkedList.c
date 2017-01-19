@@ -17,13 +17,13 @@
 
 #include "1x02 Data Structures in C.h"
 
-#include <cstdlib>
-#include <cstdio>
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef enum Boolean { False, True } Boolean;
+// Moved to main header file (1x02 Data Structures in C.h).
+//typedef enum Boolean { False, True } Boolean;
 
-typedef struct sllist
-{
+typedef struct sllist {
   int value;
   struct sllist* next;
 } sllist;
@@ -32,7 +32,7 @@ static void A();
 static void B();
 static void C();
 static void D();
-static void E();
+//static void E();
 static void AddNode(int value);
 
 sllist* ListHead;
