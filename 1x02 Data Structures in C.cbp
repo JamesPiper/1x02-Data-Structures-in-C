@@ -31,7 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="1x02 Data Structures in C.c">
+		<Unit filename="1x02 Data Structures in C (Library).c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="1x02 Data Structures in C (Main).c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="1x02 Data Structures in C.h" />
@@ -46,9 +49,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_0x03_EvaluatePostFixExpression.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="_0x0Z_MyLinkedList.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_Changes in 1x02 Data Structures in C.txt" />

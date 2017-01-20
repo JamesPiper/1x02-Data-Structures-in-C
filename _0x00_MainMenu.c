@@ -8,13 +8,16 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
+#include "1x02 Data Structures in C.h"
+
 #include <stdio.h>
 #include <string.h>
-#include "1x02 Data Structures in C.h"
+#include <ctype.h>
+/////////////////////////////////////////////////////////////////////////////////////
 
 void _0x00_MainMenu() {
 
-	char Inputs[MAX_INPUT_CHARS];
 	char Choice;
 
 	do
@@ -30,25 +33,20 @@ void _0x00_MainMenu() {
 		printf("*   B - Infix to Postfix Notation                                            *\n");
 		printf("*   C - Evalaute Postfix Expression                                          *\n");
 		printf("*                                                                            *\n");
-		printf("*   Q - Linked List (mine)                                                   *\n");
+//		printf("*   Q - Linked List (mine)                                                   *\n");
 		printf("*   X - Exit the program.                                                    *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
 
 		printf("\n");
-		printf("\n");
 		printf("Enter choice: ");
 
 		// Input user action.
-		// Because of buffering, getchar or getc processes hold more than one character.
-		// Use scanf because less chance of problems.
-		// Using "%c" causes the loop to process for each char enter, need "%s"
-		// MS wants me to use scanf_s instead of scanf b/c of buffer overflow.
-		//
-		// fscanf(stdin, "%s", Inputs, sizeof(Inputs));
-		// fscanf is getting overlow as well, ugh.
-		scanf("%s", &Inputs);
-		printf("User input: %s\n", Inputs);
+        char Inputs[MAX_INPUT_CHARS];
+		// 2 represents 1 char of input and null terminator.
+		GetUserInputs(Inputs, CHOICE_LENGTH);
+		//scanf("%s", &Inputs);
+		//printf("User input: %s\n", Inputs);
 		Choice = tolower(Inputs[0]);
 		printf("\n");
 
@@ -59,9 +57,8 @@ void _0x00_MainMenu() {
 		else if (Choice == 'c')
 			_0x03_EvaluatePostFixExpression();
 		else if (Choice == 'q')
-			_0x0Z_MyLinkedList();
-		else if (Choice == 'x')
-			return;
+            Choice = 'q';
+//			_0x0Z_MyLinkedList();
 		else
 			printf("*** Select a choice from those listed. ****\n\n");
 

@@ -6,6 +6,14 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+#ifndef STACKS_FILE
+#define STACKS_FILE
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Macros
+/////////////////////////////////////////////////////////////////////////////////////
+#define SIZE_OF_ARRAY_STACK 100
+
 /////////////////////////////////////////////////////////////////////////////////////
 // User types.
 /////////////////////////////////////////////////////////////////////////////////////
@@ -14,48 +22,28 @@ typedef struct _Stack {
 	int S[SIZE_OF_ARRAY_STACK];
 } Stack;
 
+typedef struct _CharStack {
+	int Top;
+	char S[SIZE_OF_ARRAY_STACK];
+} CharStack;
+
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes.
 /////////////////////////////////////////////////////////////////////////////////////
+// from _0x01_Stacks
 void Push(Stack*, int);
 int Pop(Stack*);
 int Peek(Stack*);
 Boolean IsEmpty(Stack*);
 Boolean IsFull(Stack*);
+// end _0x01_Stacks
+
+// from _0x02_InfixPostfixNotation
+void PushChar(CharStack*, char item);
+char PopChar(CharStack*);
+char PeekChar(CharStack*);
 Boolean IsDigit(char);
+// end _0x02_InfixPostfixNotation
 
-/////////////////////////////////////////////////////////////////////////////////////
-// Functions.
-/////////////////////////////////////////////////////////////////////////////////////
-void Push(Stack* Stack, int item) {
-	Stack->S[++Stack->Top] = item;
-}
+#endif // STACKS_FILE
 
-int Pop(Stack* Stack) {
-	return Stack->S[Stack->Top--];
-}
-
-int Peek(Stack* Stack) {
-	return Stack->S[Stack->Top];
-}
-
-Boolean IsEmpty(Stack* Stack) {
-	if (Stack->Top == -1)
-		return True;
-	else
-		return False;
-}
-
-Boolean IsFull(Stack* Stack) {
-	if (Stack->Top == SIZE_OF_ARRAY_STACK - 1)
-		return True;
-	else
- 		return False;
-}
-
-Boolean IsDigit(char item) {
-	if (item >= '0' && item <= '9')
-		return True;
-	else
-		return False;
-}

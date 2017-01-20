@@ -3,7 +3,6 @@
 //
 // Code to evaluate a PostFix expression.
 //
-// Using //>> to indicate original code I've replaced.
 // Using stack functions from _0x01_Stacks.h instead of typing in here.
 //
 // Running into problems getting postfix expression.
@@ -13,33 +12,36 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
 #include "_0x01_Stacks.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+/////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
 // Macros
-//>>#define MAX 100
+/////////////////////////////////////////////////////////////////////////////////////
+// see _0x01_Stacks.h
 
-// User-defined types
-//>>typedef struct Stack {
-//>>    int Top;
-//>>    int S[MAX];
-//>>    int S[SIZE_OF_ARRAY_STACK];
-//>>} Stack;
+/////////////////////////////////////////////////////////////////////////////////////
+// Structures & Typedefs
+/////////////////////////////////////////////////////////////////////////////////////
+// see _0x01_Stacks.h
 
-//typedef enum Boolean { False, True } Boolean;
-
+/////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
-static void GetUserInput(char*);
-//static void Push(Stack*, int);
-//static int Pop (Stack*);
-//static Boolean IsDigit(char);
+/////////////////////////////////////////////////////////////////////////////////////
+// see _0x01_Stacks.h
 static int EvaluatePostFixExpression(char*);
 static void GetNumber(char*, int*, char*);
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Main functions
+/////////////////////////////////////////////////////////////////////////////////////
 void _0x03_EvaluatePostFixExpression() {
 
     //>>char PostFix[MAX];
@@ -47,9 +49,8 @@ void _0x03_EvaluatePostFixExpression() {
     int result;
 
     printf("Enter the postfix expression: ");
-    //>>gets(PostFix);
 	char Inputs[MAX_INPUT_CHARS];
-    GetUserInput(Inputs);
+    GetUserInputs(Inputs, CHOICE_LENGTH);
     printf("\n");
     printf("User inputs: '%s'\n", Inputs);
 
@@ -63,28 +64,13 @@ void _0x03_EvaluatePostFixExpression() {
 
 }
 
-static void GetUserInput(char* input) {
-
-    // Code to store string expression with spaces in one char array.
-    // Example: '2 3 +' + '\n'
-
-    scanf("%s", input);
-    char c;
-    int i = strlen(input);
-
-    do {
-        scanf("%c", &c);
-        if (i < MAX_INPUT_CHARS)
-            input[i++] = c;
-    } while (c != '\n');
-
-    input[i - 1] = '\0';
-
-}
+/////////////////////////////////////////////////////////////////////////////////////
+// Subfunctions
+/////////////////////////////////////////////////////////////////////////////////////
 
 static int EvaluatePostFixExpression(char* postfix) {
 
-    Stack St;
+    CharStack St;
     int number, result, op1, op2;
     char StrNumber[SIZE_OF_ARRAY_STACK];
     St.Top = -1;
@@ -99,12 +85,12 @@ static int EvaluatePostFixExpression(char* postfix) {
         if (IsDigit(postfix[i])) {
             GetNumber(postfix, &i, StrNumber);
             number = atoi(StrNumber);
-            Push(&St, number);
+            PushChar(&St, number);
             printf("Number pushed to stack: %d\n", number);
             i--;
         } else {
-            op2 = Pop(&St);
-            op1 = Pop(&St);
+            op2 = PopChar(&St);
+            op1 = PopChar(&St);
             switch (postfix[i]) {
             case '+':
                 result = op1 + op2;
@@ -128,27 +114,13 @@ static int EvaluatePostFixExpression(char* postfix) {
                 printf("Unrecognizable operation.\n");
                 exit(1);
             }
-            Push(&St, result);
+            PushChar(&St, result);
         }
     }
 
-    result = Pop(&St);
+    result = PopChar(&St);
     return result;
 }
-
-// Using stack functions from _0x01_Stacks.h instead of typing in here.
-
-//static void Push(Stack* stack, int value) {
-//
-//}
-
-//static int Pop (Stack* stack) {
-//    return 0;
-//}
-
-//static Boolean IsDigit(char value) {
-//    return 0;
-//}
 
 //>>static void GetNumber(char* postfix[SIZE_OF_ARRAY_STACK], int* index, char* numbers[SIZE_OF_ARRAY_STACK]) {
 static void GetNumber(char* postfix, int* index, char* numbers) {

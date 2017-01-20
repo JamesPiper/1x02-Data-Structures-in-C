@@ -1,4 +1,4 @@
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 //
 // 2017.01.10 by James Piper, james@jamespiper.com
 //
@@ -30,49 +30,65 @@
 // 3. Uses switch statement. Not structured programming b/c of break;
 //    I should change to use if...else.
 //
-//==============================================================================
+// 4. The code in _0x01_Stacks creates an int stack.
+//    This code uses a char stack.
+//    C isn't designed for overloading so need to distinguish
+//    between a char stack and int stack.
+//
+/////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
-//#include "_0x01_Stacks.h"
+#include "_0x01_Stacks.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+/////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Macros
+/////////////////////////////////////////////////////////////////////////////////////
 // Moved to main header file (1x02 Data Structures in C.h).
-//typedef enum Boolean { False, True } Boolean;
+// see _0x01_Stacks.h
 
-// Moved to _0x01_Stacks.h
-typedef struct Stack {
-	int Top;
-	char S[SIZE_OF_ARRAY_STACK];
-} Stack;
+/////////////////////////////////////////////////////////////////////////////////////
+// Structures & Typedefs
+/////////////////////////////////////////////////////////////////////////////////////
+// see _0x01_Stacks.h
 
-
+/////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
-static void ConvertInfixToPostfix(char*, Stack*, Stack*);
-static void Push(Stack*, char item);
-static char Pop(Stack*);
-static char Peek(Stack*);
+/////////////////////////////////////////////////////////////////////////////////////
 static int Priority(char);
-static Boolean IsDigit(char);
+static void ConvertInfixToPostfix(char*, CharStack*, CharStack*);
 static Boolean IsHigherOrEqual(int, int);
+//void PushChar(CharStack*, char item);
+//char PopChar(CharStack*);
+//char PeekChar(CharStack*);
+//Boolean IsDigit(char);
 
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Main functions
+/////////////////////////////////////////////////////////////////////////////////////
 void _0x02_InfixPostfixNotation() {
 
-	char Infix[SIZE_OF_ARRAY_STACK];
-	Stack aStack, Postfix;
-	aStack.Top = Postfix.Top = -1;
+	CharStack Stack, Postfix;
+	Stack.Top = Postfix.Top = -1;
 
 	printf("Input the infix expression: ");
-	//gets(Infix);
-	scanf("%s", &Infix);
+	char Infix[SIZE_OF_ARRAY_STACK];
+	GetUserInputs(Infix, SIZE_OF_ARRAY_STACK);
 	ConvertInfixToPostfix(Infix, &aStack, &Postfix);
 	printf("The Postfix expression is: %s\n\n", Postfix.S);
 
 }
 
-static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
+/////////////////////////////////////////////////////////////////////////////////////
+// Subfunctions
+/////////////////////////////////////////////////////////////////////////////////////
+static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *postfix) {
 
 	int length;
 	char item;
@@ -84,7 +100,7 @@ static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
 	infix[length + 1] = '\0';
 
 	// Start with '('
-	Push(stack, '(');
+	PushChar(stack, '(');
 
 	for (int i = 0; infix[i] != 0; i++) {
 		switch (infix[i])
@@ -98,20 +114,20 @@ static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
 		case '^':
 			// Pop all the operatos from the stack with prioirty
 			// higher than or equal to infix[i]
-			while (IsHigherOrEqual(Priority(Peek(stack)), Priority(infix[i]))) {
-				item = Pop(stack);
-				Push(postfix, item);
-				Push(postfix, ' ');
+			while (IsHigherOrEqual(Priority(PeekChar(stack)), Priority(infix[i]))) {
+				item = PopChar(stack);
+				PushChar(postfix, item);
+				PushChar(postfix, ' ');
 			}
-			Push(stack, infix[i]);
+			PushChar(stack, infix[i]);
 			break;
 		case '(':
-			Push(stack, infix[i]);
+			PushChar(stack, infix[i]);
 			break;
 		case ')':
-			while ((item = Pop(stack)) !=')') {
-				Push(postfix, item);
-				Push(postfix, ' ');
+			while ((item = PopChar(stack)) !=')') {
+				PushChar(postfix, item);
+				PushChar(postfix, ' ');
 			}
 			break;
 		default:
@@ -119,10 +135,10 @@ static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
 			{
 				while (IsDigit(infix[i]))
 				{
-					Push(postfix,infix[i]);
+					PushChar(postfix,infix[i]);
 					i++;
 				}
-				Push(postfix, ' ');
+				PushChar(postfix, ' ');
 			}
 			else
 			{
@@ -131,19 +147,7 @@ static void ConvertInfixToPostfix(char infix[], Stack *stack, Stack *postfix) {
 			}
 		}
 	}
-	Push(postfix, 0);
-}
-
-static void Push(Stack* Stack, char item) {
-	Stack->S[++Stack->Top] = item;
-}
-
-static char Pop(Stack* Stack) {
-	return Stack->S[Stack->Top--];
-}
-
-static char Peek(Stack* Stack) {
-	return Stack->S[Stack->Top];
+	PushChar(postfix, 0);
 }
 
 static int Priority(char item) {
@@ -161,16 +165,30 @@ static int Priority(char item) {
 	}
 }
 
-static Boolean IsDigit(char item) {
-	if (item >= '0' && item <= '9')
-		return True;
-	else
-		return False;
-}
-
 static Boolean IsHigherOrEqual(int A, int B) {
 	if (A >= B)
 		return True;
 	else
 		return False;
 }
+
+Boolean IsDigit(char item) {
+	if (item >= '0' && item <= '9')
+		return True;
+	else
+		return False;
+}
+
+void PushChar(CharStack* stack, char item) {
+	stack->S[++stack->Top] = item;
+}
+
+char PopChar(CharStack* stack) {
+	return stack->S[stack->Top--];
+}
+
+char PeekChar(CharStack* stack) {
+	return stack->S[stack->Top];
+}
+
+

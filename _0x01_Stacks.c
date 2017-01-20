@@ -1,4 +1,4 @@
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 //
 // 2017.01.09 by James Piper, james@jamespiper.com
 //
@@ -29,40 +29,55 @@
 // Modify to allow char as data value in stack instead of int.
 // Create a dynamic stack. This one is fixed array stack.
 //
-//==============================================================================
+/////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
+#include "_0x01_Stacks.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+/////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Macros
+/////////////////////////////////////////////////////////////////////////////////////
+// Moved to main header file (1x02 Data Structures in C.h).
+// Rename as SIZE_OF_ARRAY_STACK
+// #define MAX 100
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Structures & Typedefs
+/////////////////////////////////////////////////////////////////////////////////////
 
 // Moved to main header file (1x02 Data Structures in C.h).
 //typedef enum Boolean { False, True } Boolean;
 
-// Moved to _0x01_Stacks.h
-typedef struct _Stack {
-	int Top;
-	int S[SIZE_OF_ARRAY_STACK];
-} Stack;
+//typedef struct _Stack {
+//	int Top;
+//	int S[SIZE_OF_ARRAY_STACK];
+//} Stack;
 
+/////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
-static void Push(Stack*, int);
+/////////////////////////////////////////////////////////////////////////////////////
 static void Display(Stack*);
-static int Pop(Stack*);
-static int Peek(Stack*);
-static Boolean IsEmpty(Stack*);
-static Boolean IsFull(Stack*);
+//void Push(Stack*, int);
+//int Pop(Stack*);
+//int Peek(Stack*);
+//Boolean IsEmpty(Stack*);
+//Boolean IsFull(Stack*);
 
-
+/////////////////////////////////////////////////////////////////////////////////////
+// Main functions
+/////////////////////////////////////////////////////////////////////////////////////
 void _0x01_Stacks() {
 
-	char Inputs[MAX_INPUT_CHARS];
 	char Choice;
 
 	int Item;
 	Stack TheStack;
-
-	// Initialize top
 	TheStack.Top = -1;
 
 	do {
@@ -86,7 +101,8 @@ void _0x01_Stacks() {
 
 		printf("\n");
 		printf("Enter choice: ");
-		scanf("%s", &Inputs);
+        char Inputs[MAX_INPUT_CHARS];
+		scanf("%s", Inputs);
 		Choice = tolower(Inputs[0]);
 
 		// Push
@@ -158,7 +174,7 @@ void _0x01_Stacks() {
 
 		// Return to main menu.
 		if (Choice == 'z') {
-			return (0);
+			return;
 		}
 
 		// Exit
@@ -169,16 +185,19 @@ void _0x01_Stacks() {
 	} while (Choice != 'x');
 }
 
-static void Push(Stack* Stack, int item) {
-	Stack->S[++Stack->Top] = item;
-}
-
+/////////////////////////////////////////////////////////////////////////////////////
+// Subfunctions
+/////////////////////////////////////////////////////////////////////////////////////
 static void Display(Stack* Stack) {
 	for (int i = Stack->Top; i >= 0; i--)
 		printf("  The %d element is %d\n", i, Stack->S[i]);
 }
 
-static int Pop(Stack* Stack) {
+void Push(Stack* Stack, int item) {
+	Stack->S[++Stack->Top] = item;
+}
+
+int Pop(Stack* Stack) {
 	//int Item;
 	//Item = Stack->S[Stack->top--];
 	//return Item;
@@ -187,18 +206,18 @@ static int Pop(Stack* Stack) {
 	return Stack->S[Stack->Top--];
 }
 
-static int Peek(Stack* Stack) {
+int Peek(Stack* Stack) {
 	return Stack->S[Stack->Top];
 }
 
-static Boolean IsEmpty(Stack* Stack) {
+Boolean IsEmpty(Stack* Stack) {
 	if (Stack->Top == -1)
 		return True;
 	else
 		return False;
 }
 
-static Boolean IsFull(Stack* Stack) {
+Boolean IsFull(Stack* Stack) {
 	if (Stack->Top == SIZE_OF_ARRAY_STACK - 1)
 		return True;
 	else
