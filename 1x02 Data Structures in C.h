@@ -1,9 +1,20 @@
 /////////////////////////////////////////////////////////////////////////////////////
-// 2017.01.17 by James Piper, james@jamespiper.com
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.17
+// File        : 1x02 Data Structures in C.h
+// Description : Main header file.
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
+/////////////////////////////////////////////////////////////////////////////////////
 //
-// Project: 1x02 Data Structures in C
+// https://en.wikipedia.org/wiki/C_preprocessor
+// http://www.cprogramming.com/tutorial/cpreprocessor.html
 //
 /////////////////////////////////////////////////////////////////////////////////////
+
+//#pragma once
 
 #ifndef MAIN_HEADER_FILE
 #define MAIN_HEADER_FILE
@@ -26,6 +37,9 @@ void _0x00_MainMenu();
 void _0x01_Stacks();
 void _0x02_InfixPostfixNotation();
 void _0x03_EvaluatePostFixExpression();
+
+void Test_0x01_Stacks();
+void Test_0x02_InfixPostfixNotation();
 
 //void _0x0Z_MyLinkedList();
 

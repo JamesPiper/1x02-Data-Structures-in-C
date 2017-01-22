@@ -4,7 +4,7 @@
 	<stdlib.h>
 	"1x02 Data Structures in C.h"
 
-1484951368 c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c.h
+1485051830 c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c.h
 
 1484684952 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x00_mainmenu.cpp
 	<cstdio>
@@ -30,16 +30,17 @@
 	<stdlib.h>
 	"1x02 Data Structures in C.h"
 
-1484951577 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x01_stacks.c
+1485050846 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x01_stacks.c
 	"1x02 Data Structures in C.h"
 	"_0x01_Stacks.h"
 	<stdlib.h>
 	<stdio.h>
 	<ctype.h>
 
-1484949436 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x02_infixpostfixnotation.c
+1485032646 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x02_infixpostfixnotation.c
 	"1x02 Data Structures in C.h"
 	"_0x01_Stacks.h"
+	<stdlib.h>
 	<stdio.h>
 	<string.h>
 
@@ -48,13 +49,13 @@
 	<stdlib.h>
 	<stdio.h>
 
-1484951413 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x00_mainmenu.c
+1485051109 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x00_mainmenu.c
 	"1x02 Data Structures in C.h"
 	<stdio.h>
 	<string.h>
 	<ctype.h>
 
-1484951313 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x03_evaluatepostfixexpression.c
+1485028974 source:c:\users\james\documents\code blocks\1x02 data structures in c\_0x03_evaluatepostfixexpression.c
 	"1x02 Data Structures in C.h"
 	"_0x01_Stacks.h"
 	<stdlib.h>
@@ -66,18 +67,32 @@
 	<stdio.h>
 	"1x02 Data Structures in C.h"
 
-1484947922 c:\users\james\documents\code blocks\1x02 data structures in c\_0x01_stacks.h
+1485054886 c:\users\james\documents\code blocks\1x02 data structures in c\_0x01_stacks.h
 
 1484949197 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c_libs.c
 	<stdio.h>
 	<string.h>
 
-1484949621 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c (library).c
+1485034016 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c (library).c
 	<stdio.h>
 	<string.h>
 
-1484949655 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c (main).c
+1485034073 source:c:\users\james\documents\code blocks\1x02 data structures in c\1x02 data structures in c (main).c
 	<stdio.h>
 	<stdlib.h>
 	"1x02 Data Structures in C.h"
+
+1485041512 source:c:\users\james\documents\code blocks\1x02 data structures in c\test__0x02_infixpostfixnotation.c
+	"1x02 Data Structures in C.h"
+	"_0x01_Stacks.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1485054886 source:c:\users\james\documents\code blocks\1x02 data structures in c\test_0x01_stacks.c
+	"1x02 Data Structures in C.h"
+	"_0x01_Stacks.h"
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
 

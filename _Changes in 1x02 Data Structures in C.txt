@@ -5,10 +5,17 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+2017.01.21
+· Using ''#pragma once'' in header files.
+· Using #define DEBUG, #ifdef DEBUG...#endif for debugging only code.
+· Adjust main menu for optional unit testing branching.
+· Unit testing for _0x01_Stacks.
+
 2017.01.20
 · Reorganizing code to properly use header files and functions in one file to be
   used or not used in another file.
 · Using #ifndef MAIN_HEADER_FILE as precompiler directive.
+· Checking and testing _0x02_InfixPostfixNotation.
 
 2017.01.19
 · Moving common code used in _0x01_Stacks() to a header file.

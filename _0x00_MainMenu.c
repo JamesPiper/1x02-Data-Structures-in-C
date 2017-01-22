@@ -1,21 +1,32 @@
 /////////////////////////////////////////////////////////////////////////////////////
-// 2017.01.13 by James Piper, james@jamespiper.com
-//
-// Based on book "Data Structures in C" by Yogish Sachdeva
-// I am working through the examples, but not doing so verbatim
-// I am typing the code out, not simply 'copy and paste'
-// and changing for style etc.
-//
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.17
+// File        : _0x00_MainMenu.c
+// Description : Terminal style main menu for user.
+//             : Starting point for the user.
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
 /////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Macros
+/////////////////////////////////////////////////////////////////////////////////////
+#define DEBUG
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Include files
 /////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 /////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Main function
+/////////////////////////////////////////////////////////////////////////////////////
 void _0x00_MainMenu() {
 
 	char Choice;
@@ -43,23 +54,42 @@ void _0x00_MainMenu() {
 
 		// Input user action.
         char Inputs[MAX_INPUT_CHARS];
-		// 2 represents 1 char of input and null terminator.
 		GetUserInputs(Inputs, CHOICE_LENGTH);
-		//scanf("%s", &Inputs);
-		//printf("User input: %s\n", Inputs);
 		Choice = tolower(Inputs[0]);
 		printf("\n");
 
-		if (Choice == 'a')
-			_0x01_Stacks();
-		else if (Choice == 'b')
-			_0x02_InfixPostfixNotation();
-		else if (Choice == 'c')
+        char UnitTest = 'n';
+		#ifdef DEBUG
+		if (Choice != 'x') {
+            printf("Run unit test (Y/N)? ");
+            strcpy(Inputs, " ");
+            GetUserInputs(Inputs, CHOICE_LENGTH);
+            UnitTest = tolower(Inputs[0]);
+            printf("Unit test %c\n", UnitTest);
+            printf("\n");
+           if ((UnitTest != 'n') && (UnitTest != 'y'))
+                UnitTest = 'n';
+        }
+        #endif // DEBUG
+
+		if (Choice == 'a') {
+            if (UnitTest == 'n')
+                _0x01_Stacks();
+            else
+                Test_0x01_Stacks();
+		} else if (Choice == 'b') {
+            if (UnitTest == 'n')
+                _0x02_InfixPostfixNotation();
+            else
+                Test_0x02_InfixPostfixNotation();
+		} else if (Choice == 'c')
 			_0x03_EvaluatePostFixExpression();
+		else if (Choice == 'd')
+            Choice = 'd';
 		else if (Choice == 'q')
             Choice = 'q';
 //			_0x0Z_MyLinkedList();
-		else
+        else if (Choice != 'x')
 			printf("*** Select a choice from those listed. ****\n\n");
 
 	} while (Choice != 'x');

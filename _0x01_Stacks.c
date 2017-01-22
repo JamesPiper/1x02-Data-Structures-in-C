@@ -1,6 +1,16 @@
 /////////////////////////////////////////////////////////////////////////////////////
-//
-// 2017.01.09 by James Piper, james@jamespiper.com
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.09
+// File        : _0x01_Stacks.c
+// Description : Example code on a stack data structure.
+//             : Menu presented to Push, Pop, Peek and Display stack items.
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
+/////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
 //
 // I'm finding flaws in the code.
 // 1. Getting numbers for the menu items causes problems if non-digits entered
@@ -32,9 +42,10 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
+// Include files
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
 #include "_0x01_Stacks.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
@@ -62,7 +73,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
 /////////////////////////////////////////////////////////////////////////////////////
-static void Display(Stack*);
+//void Display(Stack*);
 //void Push(Stack*, int);
 //int Pop(Stack*);
 //int Peek(Stack*);
@@ -70,7 +81,7 @@ static void Display(Stack*);
 //Boolean IsFull(Stack*);
 
 /////////////////////////////////////////////////////////////////////////////////////
-// Main functions
+// Main function
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x01_Stacks() {
 
@@ -120,6 +131,7 @@ void _0x01_Stacks() {
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
+            system("pause");
 			continue;
 		}
 
@@ -137,6 +149,7 @@ void _0x01_Stacks() {
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
+            system("pause");
 			continue;
 		}
 
@@ -154,6 +167,7 @@ void _0x01_Stacks() {
 			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
+            system("pause");
 			continue;
 		}
 
@@ -161,14 +175,16 @@ void _0x01_Stacks() {
 		if (Choice == 'd') {
 			printf("\n");
 			printf("------------------------------------------------------------------------------\n");
-			if (IsEmpty(&TheStack)) {
-				printf("The stack is empty.\n");
-			}
-			else {
-				Display(&TheStack);
-			}
+            Display(&TheStack);
+//			if (IsEmpty(&TheStack)) {
+//				printf("The stack is empty.\n");
+//			}
+//			else {
+//				Display(&TheStack);
+//			}
 			printf("------------------------------------------------------------------------------\n");
 			printf("\n");
+            system("pause");
 			continue;
 		}
 
@@ -188,11 +204,6 @@ void _0x01_Stacks() {
 /////////////////////////////////////////////////////////////////////////////////////
 // Subfunctions
 /////////////////////////////////////////////////////////////////////////////////////
-static void Display(Stack* Stack) {
-	for (int i = Stack->Top; i >= 0; i--)
-		printf("  The %d element is %d\n", i, Stack->S[i]);
-}
-
 void Push(Stack* Stack, int item) {
 	Stack->S[++Stack->Top] = item;
 }
@@ -223,5 +234,12 @@ Boolean IsFull(Stack* Stack) {
 	else
  		return False;
 }
-
+void Display(Stack* Stack) {
+    if (IsEmpty(Stack))
+        printf("The stack is empty.\n");
+    else {
+        for (int i = Stack->Top; i >= 0; i--)
+            printf("Element at %d is %d\n", i, Stack->S[i]);
+    }
+}
 

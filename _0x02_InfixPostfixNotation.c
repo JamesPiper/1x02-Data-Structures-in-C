@@ -1,12 +1,20 @@
 /////////////////////////////////////////////////////////////////////////////////////
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.10
+// File        : _0x02_InfixPostfixNotation.c
+// Description : Convert infix notation (2 + 2) into postfix notation (2 2 +)
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
+/////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
 //
-// 2017.01.10 by James Piper, james@jamespiper.com
+// Infix     :  A + B or C * D or E - F
+// Prefix    :  + A B, * C D, - E F         (aka Polish notation)
+// Postfix   :  A B +, C D *, E F -         (aka Reverse Polish Notation)
 //
-// Infix: A + B or C * D or E - F
-// Prefix: + A B, * C D, - E F
-// Reverse Prefix or Postfix or Suffix: A B +, C D *, E F -
-//
-// AKA Polish Notation and Reverse Polish Notation
 //
 // Five operations to focus on
 // 1. + addition
@@ -16,10 +24,11 @@
 // 5. ^ exponential
 //
 // Examples of Infix to Postfix
-// A + B --> A B +
-// A + B - C --> A B + C -
-// (A + B) * (C - D) --> A B + C D - *
-// ((A + B) * C - (D - E)) ^ (F + G) --> A B + C * D E - - F G - ^
+// A + B                              -->  A B +
+// A + B - C                          -->  A B + C -
+// (A + B) * (C - D)                  -->  A B + C D - *
+// ((A + B) * C - (D - E)) ^ (F + G)  -->  A B + C * D E - - F G - ^
+//
 //
 // I am confused by the process and the related code.
 //
@@ -38,9 +47,10 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
+// Include files
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
 #include "_0x01_Stacks.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -60,9 +70,9 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
 /////////////////////////////////////////////////////////////////////////////////////
-static int Priority(char);
-static void ConvertInfixToPostfix(char*, CharStack*, CharStack*);
-static Boolean IsHigherOrEqual(int, int);
+//void ConvertInfixToPostfix(char*, CharStack*, CharStack*);
+//int Priority(char);
+//Boolean IsHigherOrEqual(int, int);
 //void PushChar(CharStack*, char item);
 //char PopChar(CharStack*);
 //char PeekChar(CharStack*);
@@ -70,7 +80,7 @@ static Boolean IsHigherOrEqual(int, int);
 
 
 /////////////////////////////////////////////////////////////////////////////////////
-// Main functions
+// Main function
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x02_InfixPostfixNotation() {
 
@@ -80,29 +90,31 @@ void _0x02_InfixPostfixNotation() {
 	printf("Input the infix expression: ");
 	char Infix[SIZE_OF_ARRAY_STACK];
 	GetUserInputs(Infix, SIZE_OF_ARRAY_STACK);
-	ConvertInfixToPostfix(Infix, &aStack, &Postfix);
-	printf("The Postfix expression is: %s\n\n", Postfix.S);
+	ConvertInfixToPostfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.String);
+//	printf("The Postfix expression is: %s\n\n", Postfix.String);
+    system("pause");
 
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Subfunctions
 /////////////////////////////////////////////////////////////////////////////////////
-static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *postfix) {
+void ConvertInfixToPostfix(char infix[], CharStack* stack, CharStack* postfix) {
 
-	int length;
-	char item;
-	length = strlen(infix);
+	char Item;
+	int Length = strlen(infix);
 
-	// Insert ')' at the end
-	infix[length] = ')';
-	// End with null char
-	infix[length + 1] = '\0';
+	// Insert ')' at the end.
+	infix[Length++] = ')';
+	// End with null char.
+	infix[Length] = '\0';
 
 	// Start with '('
 	PushChar(stack, '(');
 
-	for (int i = 0; infix[i] != 0; i++) {
+	for (int i = 0; infix[i] != '\0'; i++) {
 		switch (infix[i])
 		{
 		case ' ':
@@ -115,8 +127,8 @@ static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *pos
 			// Pop all the operatos from the stack with prioirty
 			// higher than or equal to infix[i]
 			while (IsHigherOrEqual(Priority(PeekChar(stack)), Priority(infix[i]))) {
-				item = PopChar(stack);
-				PushChar(postfix, item);
+				Item = PopChar(stack);
+				PushChar(postfix, Item);
 				PushChar(postfix, ' ');
 			}
 			PushChar(stack, infix[i]);
@@ -125,8 +137,8 @@ static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *pos
 			PushChar(stack, infix[i]);
 			break;
 		case ')':
-			while ((item = PopChar(stack)) !=')') {
-				PushChar(postfix, item);
+			while ((Item = PopChar(stack)) !='(') {
+				PushChar(postfix, Item);
 				PushChar(postfix, ' ');
 			}
 			break;
@@ -139,6 +151,7 @@ static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *pos
 					i++;
 				}
 				PushChar(postfix, ' ');
+				i--;
 			}
 			else
 			{
@@ -147,10 +160,12 @@ static void ConvertInfixToPostfix(char infix[], CharStack *stack, CharStack *pos
 			}
 		}
 	}
-	PushChar(postfix, 0);
+	PushChar(postfix, '\0');
+    infix[--Length] = '\0';
+
 }
 
-static int Priority(char item) {
+int Priority(char item) {
 	switch (item) {
 	case '^':
 		return 3;
@@ -165,7 +180,7 @@ static int Priority(char item) {
 	}
 }
 
-static Boolean IsHigherOrEqual(int A, int B) {
+Boolean IsHigherOrEqual(int A, int B) {
 	if (A >= B)
 		return True;
 	else
@@ -180,15 +195,15 @@ Boolean IsDigit(char item) {
 }
 
 void PushChar(CharStack* stack, char item) {
-	stack->S[++stack->Top] = item;
+	stack->String[++stack->Top] = item;
 }
 
 char PopChar(CharStack* stack) {
-	return stack->S[stack->Top--];
+	return stack->String[stack->Top--];
 }
 
 char PeekChar(CharStack* stack) {
-	return stack->S[stack->Top];
+	return stack->String[stack->Top];
 }
 
 

@@ -1,9 +1,17 @@
 /////////////////////////////////////////////////////////////////////////////////////
-// 2017.01.19 by James Piper, james@jamespiper.com
-//
-// Code to evaluate a PostFix expression.
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.19
+// File        : _0x02_InfixPostfixNotation.c
+// Description : Code to evaluate a postfix expression.
+//             : e.g., '2 2 +' evaluates to 4.
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
+/////////////////////////////////////////////////////////////////////////////////////
 //
 // Using stack functions from _0x01_Stacks.h instead of typing in here.
+// Except there are based on int data and this code requires char.
 //
 // Running into problems getting postfix expression.
 // 'gets' or 'scanf' are breaking up input based on whitespace
@@ -13,9 +21,10 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
+// Include files
+/////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
 #include "_0x01_Stacks.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -40,7 +49,7 @@ static int EvaluatePostFixExpression(char*);
 static void GetNumber(char*, int*, char*);
 
 /////////////////////////////////////////////////////////////////////////////////////
-// Main functions
+// Main function
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x03_EvaluatePostFixExpression() {
 
