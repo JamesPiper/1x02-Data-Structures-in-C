@@ -5,6 +5,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+2017.01.22
+· Reorganize include files to minimize redundancy.
+·
+
 2017.01.21
 · Using ''#pragma once'' in header files.
 · Using #define DEBUG, #ifdef DEBUG...#endif for debugging only code.
