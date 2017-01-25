@@ -51,9 +51,9 @@ void _0x03_EvaluatePostFixExpression();
 void Test_0x01_Stacks();
 void Test_0x02_InfixPostfixNotation();
 
-//void _0x0Z_MyLinkedList();
-
-// Library functions.
+/////////////////////////////////////////////////////////////////////////////////////
+// Library function prototypes.
+/////////////////////////////////////////////////////////////////////////////////////
 void GetUserInputs(char*, int);
 
 #endif // HEADER_FILE

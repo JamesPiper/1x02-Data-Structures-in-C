@@ -1,13 +1,21 @@
 /////////////////////////////////////////////////////////////////////////////////////
-// 2017.01.19 by James Piper, james@jamespiper.com
-//
-// Changes to this project: 1x02 Data Structures in C
-//
+// Project     : 1x02 Data Structures in C
+// Author      : James Piper, james@jamespiper.com
+// Date        : 2017.01.19
+// File        : _Changes in 1x02 Data Structures in C.txt
+// Description : Changes to this project.
+// IDE         : Code::Blocks 16.01
+// Compiler    : GCC
+// Language    : C (Compiling to ISO 99.)
 /////////////////////////////////////////////////////////////////////////////////////
+
+2017.01.24
+· New approach to unit testing - remove from main menu and put into sub levels.
+· Remove Test_0x01_Stacks.
+· Clean up code in 0x01_Stacks and add unit testing.
 
 2017.01.22
 · Reorganize include files to minimize redundancy.
-·
 
 2017.01.21
 · Using ''#pragma once'' in header files.

@@ -36,7 +36,7 @@ typedef struct _CharStack {
 // Function prototypes.
 /////////////////////////////////////////////////////////////////////////////////////
 // from _0x01_Stacks
-void Push(Stack*, int);
+int Push(Stack*, int);
 int Pop(Stack*);
 int Peek(Stack*);
 Boolean IsEmpty(Stack*);

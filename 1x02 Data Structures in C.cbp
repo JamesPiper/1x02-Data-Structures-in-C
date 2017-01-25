@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-std=c11" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -38,9 +39,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="1x02 Data Structures in C.h" />
-		<Unit filename="Test_0x01_Stacks.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Test_0x02_InfixPostfixNotation.c">
 			<Option compilerVar="CC" />
 		</Unit>
