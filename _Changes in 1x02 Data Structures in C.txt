@@ -9,6 +9,10 @@
 // Language    : C (Compiling to ISO 99.)
 /////////////////////////////////////////////////////////////////////////////////////
 
+2017.01.25
+· Unit testing for _0x02_InfixPostfixNotation.
+· Cleaning up the code - use a menu and using if...else instead of switch statement.
+
 2017.01.24
 · New approach to unit testing - remove from main menu and put into sub levels.
 · Remove Test_0x01_Stacks.

@@ -96,7 +96,7 @@ void _0x01_Stacks() {
 	char Choice;
 
 	Stack TheStack;
-	TheStack.Top = -1;
+	TheStack.top = -1;
 
 	do {
 
@@ -183,7 +183,7 @@ void Use_Push(Stack* stack) {
         scanf("%d", &Item);
         Result = Push(stack, Item);
         if (Result)
-            printf("Item, %d, added at index %d\n", Item, stack->Top);
+            printf("Item, %d, added at index %d\n", Item, stack->top);
         else
             printf("***** Item not added to the stack *****\n");
    }
@@ -208,7 +208,7 @@ void Use_Pop(Stack* stack) {
     } else {
         Item = Pop(stack);
         printf("Popped item : %d \n", Item);
-        printf("Stack count : %d \n", stack->Top + 1);
+        printf("Stack count : %d \n", stack->top + 1);
     }
 
     printf("------------------------------------------------------------------------------\n");
@@ -231,7 +231,7 @@ void Use_Peek(Stack* stack) {
     } else {
         Item = Peek(stack);
         printf("Peek of item : %9d \n", Item);
-        printf("Stack count  : %9d \n", stack->Top + 1);
+        printf("Stack count  : %9d \n", stack->top + 1);
     }
 
     printf("------------------------------------------------------------------------------\n");
@@ -240,54 +240,54 @@ void Use_Peek(Stack* stack) {
 
 }
 
-int Push(Stack* Stack, int item) {
-	if (Stack->Top < SIZE_OF_ARRAY_STACK - 1) {
-        Stack->S[++Stack->Top] = item;
-        return 1;
+int Push(Stack* stack, int item) {
+	if (stack->top < SIZE_OF_ARRAY_STACK - 1) {
+        stack->value[++stack->top] = item;
+        return True;
 	} else
-        return 0;
+        return False;
 }
 
-int Pop(Stack* Stack) {
-    if (Stack->Top >= 0)
-        return Stack->S[Stack->Top--];
+int Pop(Stack* stack) {
+    if (stack->top >= 0)
+        return stack->value[stack->top--];
     else
         return 0;
 }
 
-int Peek(Stack* Stack) {
-    if (Stack->Top >= 0)
-        return Stack->S[Stack->Top];
+int Peek(Stack* stack) {
+    if (stack->top >= 0)
+        return stack->value[stack->top];
     else
         return 0;
 }
 
-Boolean IsEmpty(Stack* Stack) {
-	if (Stack->Top == -1)
+Boolean IsEmpty(Stack* stack) {
+	if (stack->top == -1)
 		return True;
 	else
 		return False;
 }
 
-Boolean IsFull(Stack* Stack) {
-	if (Stack->Top == SIZE_OF_ARRAY_STACK - 1)
+Boolean IsFull(Stack* stack) {
+	if (stack->top == SIZE_OF_ARRAY_STACK - 1)
 		return True;
 	else
  		return False;
 }
 
-void Display(Stack* Stack) {
+void Display(Stack* stack) {
 
     printf("\n");
     printf("------------------------------------------------------------------------------\n");
     printf("Stacks Content\n");
     printf("------------------------------------------------------------------------------\n");
 
-    if (IsEmpty(Stack))
+    if (IsEmpty(stack))
         printf("The stack is empty.\n");
     else {
-        for (int i = Stack->Top; i >= 0; i--)
-            printf("Item at index %d is %9d\n", i, Stack->S[i]);
+        for (int i = stack->top; i >= 0; i--)
+            printf("Item at index %d is %9d\n", i, stack->value[i]);
     }
 
     printf("------------------------------------------------------------------------------\n");
@@ -301,7 +301,7 @@ void Display(Stack* Stack) {
 void TestCode_E_Stack() {
 
 	Stack TheStack;
-	TheStack.Top = -1;
+	TheStack.top = -1;
     int Item;
 
 	printf("==============================================================================\n");
@@ -315,16 +315,16 @@ void TestCode_E_Stack() {
 
 	Item = 10;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = -10;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = 100000;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = 123456789;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 
     Display(&TheStack);
     system("pause");
@@ -334,7 +334,7 @@ void TestCode_E_Stack() {
 void TestCode_F_Stack() {
 
 	Stack TheStack;
-	TheStack.Top = -1;
+	TheStack.top = -1;
     int Item;
 
 	printf("==============================================================================\n");
@@ -347,35 +347,35 @@ void TestCode_F_Stack() {
     printf("------------------------------------------------------------------------------\n");
 	Item = 10;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = -10;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = 100000;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 	Item = 123456789;
     Push(&TheStack, Item);
-    printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+    printf("Item added at index %d: %9d\n", TheStack.top, Item);
 
     Display(&TheStack);
 
 	printf("------------------------------------------------------------------------------\n");
     printf("Pop Items From The Stack\n");
 	printf("------------------------------------------------------------------------------\n");
-    printf("Stack count : %9d \n", TheStack.Top + 1);
+    printf("Stack count : %9d \n", TheStack.top + 1);
     Item = Pop(&TheStack);
     printf("Popped item : %9d \n", Item);
-    printf("Stack count : %9d \n", TheStack.Top + 1);
+    printf("Stack count : %9d \n", TheStack.top + 1);
     Item = Pop(&TheStack);
     printf("Popped item : %9d \n", Item);
-    printf("Stack count : %9d \n", TheStack.Top + 1);
+    printf("Stack count : %9d \n", TheStack.top + 1);
     Item = Pop(&TheStack);
     printf("Popped item : %9d \n", Item);
-    printf("Stack count : %9d \n", TheStack.Top + 1);
+    printf("Stack count : %9d \n", TheStack.top + 1);
     Item = Pop(&TheStack);
     printf("Popped item : %9d \n", Item);
-    printf("Stack count : %9d \n", TheStack.Top + 1);
+    printf("Stack count : %9d \n", TheStack.top + 1);
 
     Display(&TheStack);
     system("pause");
@@ -385,7 +385,7 @@ void TestCode_F_Stack() {
 void TestCode_G_Stack() {
 
 	Stack TheStack;
-	TheStack.Top = -1;
+	TheStack.top = -1;
     int Item;
     int Result;
 
@@ -404,11 +404,11 @@ void TestCode_G_Stack() {
             printf("%d ", i);
         else {
             printf("\n");
-            printf("\n");
             printf("\n***** Item, %d, not added to the stack *****\n", i);
         }
     }
 	printf("\n");
+    printf("\n");
     if (Result)
         printf("Items 0 to %d pushed onto the stack.\n", SIZE_OF_ARRAY_STACK - 1);
     else
@@ -420,7 +420,7 @@ void TestCode_G_Stack() {
 	printf("------------------------------------------------------------------------------\n");
     Item = Peek(&TheStack);
     printf("Peek of item : %9d \n", Item);
-    printf("Stack count  : %9d \n", TheStack.Top + 1);
+    printf("Stack count  : %9d \n", TheStack.top + 1);
 	printf("\n");
 
     //Display(&TheStack);
@@ -431,7 +431,7 @@ void TestCode_G_Stack() {
 void TestCode_H_Stack() {
 
 	Stack TheStack;
-	TheStack.Top = -1;
+	TheStack.top = -1;
     int Item;
     int Result;
 
@@ -451,8 +451,10 @@ void TestCode_H_Stack() {
             printf("\n***** Item, %d, not added to the stack *****\n", i);
    }
 	printf("\n");
+    printf("\n");
     if (Result) {
         printf("Items 0 to %d pushed onto the stack.\n", SIZE_OF_ARRAY_STACK - 1);
+        printf("\n");
         printf("The stack is full.\n");
     } else
         printf("***** Problem adding all the items to the stack *****\n");
@@ -463,7 +465,7 @@ void TestCode_H_Stack() {
 	printf("------------------------------------------------------------------------------\n");
     Item = Peek(&TheStack);
     printf("Peek of item : %9d \n", Item);
-    printf("Stack count  : %9d \n", TheStack.Top + 1);
+    printf("Stack count  : %9d \n", TheStack.top + 1);
 	printf("\n");
 
 	printf("------------------------------------------------------------------------------\n");
@@ -471,7 +473,7 @@ void TestCode_H_Stack() {
 	printf("------------------------------------------------------------------------------\n");
     Result = Push(&TheStack, 1000);
     if (Result)
-        printf("Item added at index %d: %9d\n", TheStack.Top, Item);
+        printf("Item added at index %d: %9d\n", TheStack.top, Item);
     else
         printf("***** Problem adding the item to the stack *****\n");
 	printf("\n");

@@ -23,13 +23,13 @@
 // User types.
 /////////////////////////////////////////////////////////////////////////////////////
 typedef struct _Stack {
-	int Top;
-	int S[SIZE_OF_ARRAY_STACK];
+	int top;
+	int value[SIZE_OF_ARRAY_STACK];
 } Stack;
 
 typedef struct _CharStack {
-	int Top;
-	char String[SIZE_OF_ARRAY_STACK];
+	int top;
+	char expression[SIZE_OF_ARRAY_STACK];
 } CharStack;
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -45,10 +45,10 @@ void Display(Stack*);
 // end _0x01_Stacks
 
 // from _0x02_InfixPostfixNotation
-void ConvertInfixToPostfix(char*, CharStack*, CharStack*);
+void Convert_Infix_To_Postfix(char*, CharStack*, CharStack*);
 int Priority(char);
 Boolean IsHigherOrEqual(int, int);
-void PushChar(CharStack*, char item);
+int PushChar(CharStack*, char);
 char PopChar(CharStack*);
 char PeekChar(CharStack*);
 Boolean IsDigit(char);

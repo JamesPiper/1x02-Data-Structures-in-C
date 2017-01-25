@@ -75,30 +75,103 @@
 //char PeekChar(CharStack*);
 //Boolean IsDigit(char);
 
+void ProcessInfix_To_Postfix();
+
+void TestCode_B_InfixPostfixNotation();
+void TestCode_C_InfixPostfixNotation();
+void TestCode_D_InfixPostfixNotation();
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x02_InfixPostfixNotation() {
 
-	CharStack Stack, Postfix;
-	Stack.Top = Postfix.Top = -1;
+	char Choice;
 
-	printf("Input the infix expression: ");
-	char Infix[SIZE_OF_ARRAY_STACK];
-	GetUserInputs(Infix, SIZE_OF_ARRAY_STACK);
-	ConvertInfixToPostfix(Infix, &Stack, &Postfix);
-	printf("Infix    : %s\n", Infix);
-	printf("Postfix  : %s\n", Postfix.String);
-//	printf("The Postfix expression is: %s\n\n", Postfix.String);
-    system("pause");
+	do {
+
+		printf("******************************************************************************\n");
+		printf("*                                                                            *\n");
+		printf("*   Postfix Notation                                                         *\n");
+		printf("*                                                                            *\n");
+		printf("*   Type Character + Enter                                                   *\n");
+		printf("*                                                                            *\n");
+		printf("*   A - Enter Infix And Convert To Postfix                                   *\n");
+		printf("*                                                                            *\n");
+        #define DEBUG_102
+        #ifdef DEBUG_102
+		printf("*                                                                            *\n");
+		printf("*   B - Unit Testing - Two Opperands                                         *\n");
+		printf("*   C - Unit Testing - Two Bracketed Items                                   *\n");
+		printf("*   D - Unit Testing - Three Opperands                                       *\n");
+        #endif
+        #undef DEBUG_102
+		printf("*                                                                            *\n");
+		printf("*   X - Exit                                                                 *\n");
+		printf("*   Z - Return                                                               *\n");
+		printf("*                                                                            *\n");
+		printf("******************************************************************************\n");
+		printf("\n");
+
+		printf("Enter choice: ");
+        char Inputs[MAX_INPUT_CHARS];
+		scanf("%s", Inputs);
+		Choice = tolower(Inputs[0]);
+
+		if (Choice == 'a')
+            ProcessInfix_To_Postfix();
+		else if (Choice == 'b')
+           TestCode_B_InfixPostfixNotation();
+		else if (Choice == 'c')
+            TestCode_C_InfixPostfixNotation();
+        else if (Choice == 'd')
+            TestCode_D_InfixPostfixNotation();
+        else if (Choice == 'e')
+            Choice = 'i';
+        else if (Choice == 'f')
+            Choice = 'i';
+        else if (Choice == 'g')
+            Choice = 'i';
+        else if (Choice == 'h')
+            Choice = 'i';
+        else if (Choice == 'i')
+            Choice = 'i';
+        else if (Choice == 'z')
+			return;
+        else if (Choice == 'x')
+			exit(0);
+		else if (Choice != 'x') {
+			printf("*** Select a choice from those listed. ****\n\n");
+            system("pause");
+		}
+
+	} while (Choice != 'x');
 
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Subfunctions
 /////////////////////////////////////////////////////////////////////////////////////
-void ConvertInfixToPostfix(char infix[], CharStack* stack, CharStack* postfix) {
+void ProcessInfix_To_Postfix() {
+
+	CharStack Stack, Postfix;
+	Stack.top = Postfix.top = -1;
+
+	printf("Input the infix expression: ");
+	char Infix[SIZE_OF_ARRAY_STACK];
+	GetUserInputs(Infix, SIZE_OF_ARRAY_STACK);
+
+	Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+
+    system("pause");
+
+}
+
+void Convert_Infix_To_Postfix(char infix[], CharStack* stack, CharStack* postfix) {
+
 
 	char Item;
 	int Length = strlen(infix);
@@ -111,7 +184,77 @@ void ConvertInfixToPostfix(char infix[], CharStack* stack, CharStack* postfix) {
 	// Start with '('
 	PushChar(stack, '(');
 
-	for (int i = 0; infix[i] != '\0'; i++) {
+    #define DEBUG_102
+    #ifdef DEBUG_102
+    #endif
+
+    for (int i = 0; infix[i] != '\0'; i++) {
+
+        if (infix[i] != ' ') {
+            if ((infix[i] == '+') ||
+                (infix[i] == '-') ||
+                (infix[i] == '*') ||
+                (infix[i] == '/') ||
+                (infix[i] == '^')) {
+
+                // Pop all the operatos from the stack with prioirty
+                // higher than or equal to infix[i]
+                while (IsHigherOrEqual(Priority(PeekChar(stack)), Priority(infix[i]))) {
+                    Item = PopChar(stack);
+                    PushChar(postfix, Item);
+                    PushChar(postfix, ' ');
+                }
+                PushChar(stack, infix[i]);
+
+            } else if (infix[i] == '(') {
+                PushChar(stack, infix[i]);
+            } else if (infix[i] == ')') {
+                while ((Item = PopChar(stack)) !='(') {
+                    PushChar(postfix, Item);
+                    PushChar(postfix, ' ');
+                }
+            } else {
+                if(IsDigit(infix[i])) {
+                    while (IsDigit(infix[i]))
+                    {
+                        PushChar(postfix, infix[i]);
+                        i++;
+                    }
+                    PushChar(postfix, ' ');
+                    i--;
+                } else {
+                    printf("\n");
+                    printf("***** Incorrect character (%c %X) encountered in infix. *****\n", infix[i], infix[i]);
+                    break;
+                }
+            }
+        }
+	}
+
+	PushChar(postfix, '\0');
+    infix[--Length] = '\0';
+
+    #ifdef DEBUG_102
+    #endif
+    #undef DEBUG_102
+
+}
+
+void Convert_Infix_To_Postfix_OLD(char infix[], CharStack* stack, CharStack* postfix) {
+
+	char Item;
+	int Length = strlen(infix);
+
+	// Insert ')' at the end.
+	infix[Length++] = ')';
+	// End with null char.
+	infix[Length] = '\0';
+
+	// Start with '('
+	PushChar(stack, '(');
+
+    for (int i = 0; infix[i] != '\0'; i++) {
+
 		switch (infix[i])
 		{
 		case ' ':
@@ -149,20 +292,21 @@ void ConvertInfixToPostfix(char infix[], CharStack* stack, CharStack* postfix) {
 				}
 				PushChar(postfix, ' ');
 				i--;
-			}
-			else
-			{
-				printf("Incorrect character encountered in infix.\n");
+			} else {
+				printf("\n");
+				printf("***** Incorrect character encountered in infix. *****\n");
 				break;
 			}
 		}
 	}
+
 	PushChar(postfix, '\0');
     infix[--Length] = '\0';
 
 }
 
 int Priority(char item) {
+
 	switch (item) {
 	case '^':
 		return 3;
@@ -191,16 +335,220 @@ Boolean IsDigit(char item) {
 		return False;
 }
 
-void PushChar(CharStack* stack, char item) {
-	stack->String[++stack->Top] = item;
+int PushChar(CharStack* stack, char item) {
+	if (stack->top < SIZE_OF_ARRAY_STACK - 1) {
+        stack->expression[++stack->top] = item;
+        return 1;
+	} else
+        return 0;
 }
 
 char PopChar(CharStack* stack) {
-	return stack->String[stack->Top--];
+    if (stack->top >= 0)
+        return stack->expression[stack->top--];
+    else
+        return 0;
 }
 
 char PeekChar(CharStack* stack) {
-	return stack->String[stack->Top];
+    if (stack->top >= 0)
+        return stack->expression[stack->top];
+    else
+        return 0;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Unit testing for this file.
+/////////////////////////////////////////////////////////////////////////////////////
+void TestCode_B_InfixPostfixNotation() {
 
+	printf("==============================================================================\n");
+	printf("B - Unit Testing - Two Opperands\n");
+	printf("==============================================================================\n");
+	printf("\n");
+
+    CharStack Stack;
+    CharStack Postfix;
+	Stack.top = -1;
+	Postfix.top = -1;
+    char Infix[SIZE_OF_ARRAY_STACK];
+
+	printf("Example 1\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 + 3");
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 2\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "(12 + 13)");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 3\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "22 - 23");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 4\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "122 * 323");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 5\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "122 / 323");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 6\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 * 64");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("==============================================================================\n");
+	printf("\n");
+	system("pause");
+
+}
+
+void TestCode_C_InfixPostfixNotation() {
+
+
+	printf("==============================================================================\n");
+	printf("C - Unit Testing - Two Bracketed Items\n");
+	printf("==============================================================================\n");
+	printf("\n");
+
+    CharStack Stack;
+    CharStack Postfix;
+	Stack.top = -1;
+	Postfix.top = -1;
+    char Infix[SIZE_OF_ARRAY_STACK];
+
+	printf("Example 1\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "(2 + 3) + (4 + 5)");
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 2\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "(2 * 3) + (4 - 5)");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 3\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "(2 / 3) ^ (4 * 5)");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("==============================================================================\n");
+	printf("\n");
+	system("pause");
+
+}
+
+void TestCode_D_InfixPostfixNotation() {
+
+
+	printf("==============================================================================\n");
+	printf("D - Unit Testing - Three Opperands\n");
+	printf("==============================================================================\n");
+	printf("\n");
+
+    CharStack Stack;
+    CharStack Postfix;
+	Stack.top = -1;
+	Postfix.top = -1;
+    char Infix[SIZE_OF_ARRAY_STACK];
+
+	printf("Example 1\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 + 3 + 4");
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 2\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 - 3 + 4");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 3\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 / 3 + 4");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 4\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 - 3 * 4");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("Example 4\n");
+	printf("------------------------------------------------------------------------------\n");
+    strcpy(Infix, "2 ^ 3 + 4");
+	Stack.top = -1;
+	Postfix.top = -1;
+    Convert_Infix_To_Postfix(Infix, &Stack, &Postfix);
+	printf("Infix    : %s\n", Infix);
+	printf("Postfix  : %s\n", Postfix.expression);
+	printf("\n");
+
+	printf("==============================================================================\n");
+	printf("\n");
+	system("pause");
+
+}

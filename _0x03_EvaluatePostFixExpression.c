@@ -78,7 +78,7 @@ static int EvaluatePostFixExpression(char* postfix) {
     CharStack St;
     int number, result, op1, op2;
     char StrNumber[SIZE_OF_ARRAY_STACK];
-    St.Top = -1;
+    St.top = -1;
     printf("Expression to evaluate in function: '%s'\n", postfix);
 
     for (int i = 0; postfix[i] != 0; i++) {

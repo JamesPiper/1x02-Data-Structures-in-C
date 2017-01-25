@@ -42,8 +42,8 @@ void Test_0x02_InfixPostfixNotation() {
 
     CharStack Stack;
     CharStack Postfix;
-	Stack.Top = -1;
-	Postfix.Top = -1;
+	Stack.top = -1;
+	Postfix.top = -1;
     char Infix[SIZE_OF_ARRAY_STACK];
 
 	printf("Example 1\n");
@@ -51,30 +51,30 @@ void Test_0x02_InfixPostfixNotation() {
     strcpy(Infix, "2 + 2");
     ConvertInfixToPostfix(Infix, &Stack, &Postfix);
 	printf("Infix    : %s\n", Infix);
-	printf("Postfix  : %s\n", Postfix.String);
+	printf("Postfix  : %s\n", Postfix.expression);
 	printf("\n");
 
 	printf("Example 2\n");
 	printf("------------------------------------------------------------------------------\n");
     strcpy(Infix, "(2 + 2)");
-	Stack.Top = -1;
-	Postfix.Top = -1;
+	Stack.top = -1;
+	Postfix.top = -1;
 //    Stack.String[0] = "\0";
 //    Postfix.String[0] = "\0";
     ConvertInfixToPostfix(Infix, &Stack, &Postfix);
 	printf("Infix    : %s\n", Infix);
-	printf("Postfix  : %s\n", Postfix.String);
+	printf("Postfix  : %s\n", Postfix.expression);
 	printf("\n");
 
 	printf("Example 3\n");
 	printf("------------------------------------------------------------------------------\n");
     strcpy(Infix, "(2 + )");
     strcpy(Infix, "(2 + ");
-	Stack.Top = -1;
-	Postfix.Top = -1;
+	Stack.top = -1;
+	Postfix.top = -1;
     ConvertInfixToPostfix(Infix, &Stack, &Postfix);
 	printf("Infix    : %s\n", Infix);
-	printf("Postfix  : %s\n", Postfix.String);
+	printf("Postfix  : %s\n", Postfix.expression);
 	printf("\n");
 
 
