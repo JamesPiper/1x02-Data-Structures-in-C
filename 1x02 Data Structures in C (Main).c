@@ -6,7 +6,7 @@
 // Description : main()
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
-// Language    : C (Compiling to ISO 99.)
+// Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // This project is based on the book "Data Structures in C" by Yogish Sachdeva.

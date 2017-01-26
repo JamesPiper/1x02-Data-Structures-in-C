@@ -6,12 +6,19 @@
 // Description : Changes to this project.
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
-// Language    : C (Compiling to ISO 99.)
+// Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
+
+2017.01.26
+· More unit testing for _0x02_InfixPostfixNotation.
+· The code has flaws but not going to bullet proof.
+· Unit testing for _0x03_Evaluate_PostFix_Expression.
+
 
 2017.01.25
 · Unit testing for _0x02_InfixPostfixNotation.
 · Cleaning up the code - use a menu and using if...else instead of switch statement.
+· Unit testing and coding for evaluating a postfix expression.
 
 2017.01.24
 · New approach to unit testing - remove from main menu and put into sub levels.

@@ -4,44 +4,22 @@
 	<ActiveTarget name="Debug" />
 	<File name="_Changes in 1x02 Data Structures in C.txt" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="684" topLine="0" />
+			<Cursor1 position="599" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="_0x03_EvaluatePostFixExpression.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="1x02 Data Structures in C (Library).c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1381" topLine="6" />
+			<Cursor1 position="758" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="_0x02_InfixPostfixNotation.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2256" topLine="44" />
-		</Cursor>
-	</File>
-	<File name="_0x01_Stacks.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="766" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="_0x01_Stacks.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="14634" topLine="246" />
-		</Cursor>
-		<Folding>
-			<Collapse line="169" />
-			<Collapse line="196" />
-			<Collapse line="219" />
-			<Collapse line="300" />
-			<Collapse line="333" />
-		</Folding>
 	</File>
 	<File name="_0x00_MainMenu.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2587" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="1x02 Data Structures in C.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="_0x01_Stacks.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1625" topLine="14" />
+			<Cursor1 position="9667" topLine="146" />
 		</Cursor>
 	</File>
 	<File name="1x02 Data Structures in C (Main).c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -49,9 +27,24 @@
 			<Cursor1 position="1129" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="1x02 Data Structures in C (Library).c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="1x02 Data Structures in C.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="758" topLine="0" />
+			<Cursor1 position="2015" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="_0x01_Stacks.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="768" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="_0x03_Evaluate_PostFix_Expression.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20913" topLine="546" />
+		</Cursor>
+	</File>
+	<File name="_0x02_Infix_Postfix_Notation.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="19248" topLine="557" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

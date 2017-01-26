@@ -39,9 +39,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="1x02 Data Structures in C.h" />
-		<Unit filename="Test_0x02_InfixPostfixNotation.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="_0x00_MainMenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -49,10 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_0x01_Stacks.h" />
-		<Unit filename="_0x02_InfixPostfixNotation.c">
+		<Unit filename="_0x02_Infix_Postfix_Notation.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="_0x03_EvaluatePostFixExpression.c">
+		<Unit filename="_0x03_Evaluate_PostFix_Expression.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_Changes in 1x02 Data Structures in C.txt" />

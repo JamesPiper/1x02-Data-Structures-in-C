@@ -6,7 +6,7 @@
 // Description : Common functions not related to data structures.
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
-// Language    : C (Compiling to ISO 99.)
+// Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -82,11 +82,11 @@ void GetUserInputs(char* input, int max_length) {
 
 	do {
 		// Get additional text one character at a time.
-        scanf("%c", &c);
+		scanf("%c", &c);
 
 		// Keep adding text as long before max_length.
-        if (i < max_length)
-            input[i++] = c;
+		if (i < max_length)
+			input[i++] = c;
 
 		// Need to continue looping until '\n' is reached
 		// because additional text input will be processed.

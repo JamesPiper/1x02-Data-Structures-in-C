@@ -6,7 +6,7 @@
 // Description : Main header file.
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
-// Language    : C (Compiling to ISO 99.)
+// Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // https://en.wikipedia.org/wiki/C_preprocessor
@@ -45,11 +45,8 @@ typedef enum Boolean { False, True } Boolean;
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x00_MainMenu();
 void _0x01_Stacks();
-void _0x02_InfixPostfixNotation();
-void _0x03_EvaluatePostFixExpression();
-
-void Test_0x01_Stacks();
-void Test_0x02_InfixPostfixNotation();
+void _0x02_Infix_Postfix_Notation();
+void _0x03_Evaluate_PostFix_Expression();
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Library function prototypes.

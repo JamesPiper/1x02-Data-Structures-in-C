@@ -7,7 +7,7 @@
 //             : Starting point for the user.
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
-// Language    : C (Compiling to ISO 99.)
+// Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -44,22 +44,22 @@ void _0x00_MainMenu() {
 		printf("Enter choice: ");
 
 		// Input user action.
-        char Inputs[MAX_INPUT_CHARS];
+		char Inputs[MAX_INPUT_CHARS];
 		GetUserInputs(Inputs, CHOICE_LENGTH);
 		Choice = tolower(Inputs[0]);
 		printf("\n");
 
 		if (Choice == 'a')
-            _0x01_Stacks();
+			_0x01_Stacks();
 		else if (Choice == 'b')
-            _0x02_InfixPostfixNotation();
+			_0x02_Infix_Postfix_Notation();
 		else if (Choice == 'c')
-			_0x03_EvaluatePostFixExpression();
+			_0x03_Evaluate_PostFix_Expression();
 		else if (Choice == 'd')
-            Choice = 'd';
+			Choice = 'd';
 		else if (Choice == 'q')
-            Choice = 'q';
-        else if (Choice != 'x')
+			Choice = 'q';
+		else if (Choice != 'x')
 			printf("*** Select a choice from those listed. ****\n\n");
 
 	} while (Choice != 'x');
