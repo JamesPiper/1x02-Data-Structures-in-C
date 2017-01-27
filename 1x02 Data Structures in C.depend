@@ -85,7 +85,7 @@
 1485378131 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c (library).c
 	"1x02 Data Structures in C.h"
 
-1485462376 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c.h
+1485550940 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c.h
 	<stdlib.h>
 	<stdio.h>
 	<ctype.h>
@@ -151,6 +151,17 @@
 
 1485496084 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x00_stacks.h
 
-1485502139 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x00_queues_menu.c
+1485550878 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x00_queues_menu.c
 	"1x02 Data Structures in C.h"
+
+1485550795 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x01_linear_queue.c
+	"1x02 Data Structures in C.h"
+	"_2x00_Queues.h"
+
+1485550771 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x00_queues.h
+	"1x02 Data Structures in C.h"
+
+1485551500 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x02_circular_queue.c
+	"1x02 Data Structures in C.h"
+	"_2x00_Queues.h"
 

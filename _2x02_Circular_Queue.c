@@ -2,7 +2,7 @@
 // Project     : 1x02 Data Structures in C
 // Author      : James Piper, james@jamespiper.com
 // Date        : 2017.01.26
-// File        : _2x01_Linear_Queue.c
+// File        : _2x02_Circular_Queue.c
 // Description : Example code for a linear queue data structure.
 //             : Menu presented to Add, Delete and Display queue items.
 // IDE         : Code::Blocks 16.01
@@ -23,13 +23,9 @@
 // 4. Linear data - array.
 // 5. FIFO list.
 //
-// Front tracks the start of the queue.
-// Rear tracks the end of the queue.
-// At start, Front and Rear are zero.
-// As items are added to the queue, the Front stays in place and Rear increases.
-// As items are deleted, Front increases until it reaches the Rear.
-// If Rear equals the max size, the queue items are shifted to empty spaces.
-// This is a result of the use of an array and a limitation in this implementation.
+// Circular version is similar to linear except the queue can wrap around to the
+// beginning to use empty elements.
+//
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,29 +49,30 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
 /////////////////////////////////////////////////////////////////////////////////////
-void Use_Add_Linear_Queue(LinearQueue* queue);
+void Use_Add_Circular_Queue(CircularQueue* queue);
 
-void TestCode_D_Linear_Queue();
-void TestCode_E_Linear_Queue();
-void TestCode_F_Linear_Queue();
-void TestCode_G_Linear_Queue();
-void TestCode_H_Linear_Queue();
+void TestCode_D_Circular_Queue();
+void TestCode_E_Circular_Queue();
+void TestCode_F_Circular_Queue();
+void TestCode_G_Circular_Queue();
+void TestCode_H_Circular_Queue();
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
-void _2x01_Linear_Queue() {
+void _2x02_Circular_Queue() {
 
 	char Choice;
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
+	Queue.count = 0;
 
 	do {
 
 		printf("******************************************************************************\n");
 		printf("*                                                                            *\n");
-		printf("*   Linear Queue Data Structure                                              *\n");
+		printf("*   Circular Queue Data Structure                                            *\n");
 		printf("*                                                                            *\n");
 		printf("*   Type Character + Enter                                                   *\n");
 		printf("*                                                                            *\n");
@@ -107,23 +104,23 @@ void _2x01_Linear_Queue() {
 		printf("\n");
 
 		if (Choice == 'a')
-			Use_Add_Linear_Queue(&Queue);
+			Use_Add_Circular_Queue(&Queue);
 		else if (Choice == 'b') {
-			Delete_Linear_Queue(&Queue);
+			Delete_Circular_Queue(&Queue);
 			system("pause");
 		} else if (Choice == 'c') {
-			Display_Linear_Queue(&Queue);
+			Display_Circular_Queue(&Queue);
 			system("pause");
 		} else if (Choice == 'd')
-			TestCode_D_Linear_Queue();
+			TestCode_D_Circular_Queue();
 		else if (Choice == 'e')
-			TestCode_E_Linear_Queue();
+			TestCode_E_Circular_Queue();
 		else if (Choice == 'f')
-			TestCode_F_Linear_Queue();
+			TestCode_F_Circular_Queue();
 		else if (Choice == 'g')
-			TestCode_G_Linear_Queue();
+			TestCode_G_Circular_Queue();
 		else if (Choice == 'h')
-			TestCode_H_Linear_Queue();
+			TestCode_H_Circular_Queue();
 		else if (Choice == 'i')
 			Choice = 'i';
 		else if (Choice == 'z')
@@ -142,257 +139,276 @@ void _2x01_Linear_Queue() {
 /////////////////////////////////////////////////////////////////////////////////////
 // Subfunctions
 /////////////////////////////////////////////////////////////////////////////////////
-void Use_Add_Linear_Queue(LinearQueue* queue) {
+void Use_Add_Circular_Queue(CircularQueue* queue) {
 
 	char Item;
 	printf("Input the element: ");
 	fflush(stdin);
 	scanf("%c", &Item);
 	if (Item != NULL)
-		Add_Linear_Queue(queue, Item);
+		Add_Circular_Queue(queue, Item);
 
 }
 
-void Add_Linear_Queue(LinearQueue* queue, char item) {
+void Add_Circular_Queue(CircularQueue* queue, char item) {
 
 	// Queue is full.
-	if ((queue->front == 0) && (queue->rear == SIZE_OF_ARRAY_QUEUE)) {
+	if (queue->count == SIZE_OF_ARRAY_QUEUE) {
 		printf("***** The queue is full *****\n");
 		printf("***** Item '%c' not added *****\n", item);
 	} else {
-		if (queue->rear == SIZE_OF_ARRAY_QUEUE) {
-			// Shift items to start of the array.
-			for (int i = queue->front; i < queue->rear; i++) {
-				queue->item[i - queue->front] = queue->item[i];
-				queue->rear = queue->rear - queue->front;
-				queue->front=0;
-			}
-		}
+		// Adjust rear to front of array.
+		if (queue->rear == SIZE_OF_ARRAY_QUEUE)
+			queue->rear = 0;
 
 		// Add item.
 		queue->item[queue->rear++] = item;
+		queue->count++;
 		printf("Item added to the queue: '%c'\n", item);
-		printf("Front : %d\n", queue->front);
-		printf("Rear  : %d\n", queue->rear);
-		printf("\n");
 	}
+
+	printf("Front  : %d\n", queue->front);
+	printf("Rear   : %d\n", queue->rear);
+	printf("Count  : %d\n", queue->count);
+	printf("\n");
+
 }
 
-void Display_Linear_Queue(LinearQueue* queue) {
+void Display_Circular_Queue(CircularQueue* queue) {
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("List of Items In The Queue\n");
 	printf("------------------------------------------------------------------------------\n");
 
-	printf("Front : %d\n", queue->front);
-	printf("Rear  : %d\n", queue->rear);
+	printf("Front  : %d\n", queue->front);
+	printf("Rear   : %d\n", queue->rear);
+	printf("Count  : %d\n", queue->count);
 	printf("\n");
 
 	if (queue->front == queue->rear)
 		printf("The queue is empty.\n");
 	else {
-		for (int i = queue->front; i < queue->rear; i++) {
-			printf("Item  : '%c'\n", queue->item[i]);
+		for (int i = 0; i < queue->count; i++) {
+			if ((queue->front + i) >= SIZE_OF_ARRAY_QUEUE)
+				printf("Item  : '%c'\n", queue->item[queue->front + i - SIZE_OF_ARRAY_QUEUE]);
+			else
+				printf("Item  : '%c'\n", queue->item[queue->front + i]);
 		}
+
 	}
 
 	printf("------------------------------------------------------------------------------\n");
 
 }
 
-void Delete_Linear_Queue(LinearQueue* queue) {
+void Delete_Circular_Queue(CircularQueue* queue) {
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("Delete Item In The Queue (FIFO)\n");
 	printf("------------------------------------------------------------------------------\n");
 
-	printf("Front : %d\n", queue->front);
+	printf("Front  : %d\n", queue->front);
+	printf("Count  : %d\n", queue->count);
 
 	if (queue->front == queue->rear)
 		printf("***** The queue is empty. *****\n");
-	else
+	else {
 		printf("Item  : '%c' deleted\n", queue->item[queue->front++]);
-
-	printf("Front : %d\n", queue->front);
+		queue->count--;
+		printf("Front  : %d\n", queue->front);
+		printf("Count  : %d\n", queue->count);
+	}
 
 	printf("------------------------------------------------------------------------------\n");
 
 }
+
 /////////////////////////////////////////////////////////////////////////////////////
 // Unit testing for this file.
 /////////////////////////////////////////////////////////////////////////////////////
-void TestCode_D_Linear_Queue() {
+void TestCode_D_Circular_Queue() {
 
 	printf("==============================================================================\n");
 	printf("D - Unit Testing - Add Items To The Queue\n");
 	printf("==============================================================================\n");
 	printf("\n");
 
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
+	Queue.count = 0;
 
 	printf("Items Added.\n");
 	printf("------------------------------------------------------------------------------\n");
 	char Item = 'a';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 'z';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'b';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = '1';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'c';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 245;
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'd';
+	Add_Circular_Queue(&Queue, Item);
+
+	Item = 'e';
+	Add_Circular_Queue(&Queue, Item);
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("\n");
 
-	Display_Linear_Queue(&Queue);
+	Display_Circular_Queue(&Queue);
 
 	printf("\n");
 	system("pause");
 
 }
 
-void TestCode_E_Linear_Queue() {
+void TestCode_E_Circular_Queue() {
 
 	printf("==============================================================================\n");
 	printf("E - Unit Testing - Add Item To Full Queue\n");
 	printf("==============================================================================\n");
 	printf("\n");
 
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
+	Queue.count = 0;
 
 	printf("Items Added.\n");
 	printf("------------------------------------------------------------------------------\n");
 	char Item = 'a';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 'z';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'b';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = '1';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'c';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 245;
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'd';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = '+';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'e';
+	Add_Circular_Queue(&Queue, Item);
 
 	Item = '!';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("\n");
 
-	Display_Linear_Queue(&Queue);
+	Display_Circular_Queue(&Queue);
 
 	printf("\n");
 	system("pause");
 
 }
 
-void TestCode_F_Linear_Queue() {
+void TestCode_F_Circular_Queue() {
 
 	printf("==============================================================================\n");
 	printf("F - Unit Testing - Delete Item From Queue\n");
 	printf("==============================================================================\n");
 	printf("\n");
 
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
+	Queue.count = 0;
 
 	printf("Items Added.\n");
 	printf("------------------------------------------------------------------------------\n");
 	char Item = 'a';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 'z';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'b';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = '1';
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'c';
+	Add_Circular_Queue(&Queue, Item);
 
-	Item = 245;
-	Add_Linear_Queue(&Queue, Item);
+	Item = 'd';
+	Add_Circular_Queue(&Queue, Item);
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("\n");
-	Delete_Linear_Queue(&Queue);
+	Delete_Circular_Queue(&Queue);
 
 	printf("\n");
-	Display_Linear_Queue(&Queue);
+	Display_Circular_Queue(&Queue);
 
 	printf("\n");
 	system("pause");
 
 }
 
-void TestCode_G_Linear_Queue() {
+void TestCode_G_Circular_Queue() {
 
 	printf("==============================================================================\n");
 	printf("G - Unit Testing - Delete Item From Empty Queue \n");
 	printf("==============================================================================\n");
 	printf("\n");
 
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
-	Delete_Linear_Queue(&Queue);
+	Queue.count = 0;
+
+	Delete_Circular_Queue(&Queue);
 
 	printf("\n");
 	system("pause");
 
 }
 
-void TestCode_H_Linear_Queue() {
+void TestCode_H_Circular_Queue() {
 
 	printf("==============================================================================\n");
 	printf("H - Unit Testing - Move Front Forward (Add, Delete, Repeat)\n");
 	printf("==============================================================================\n");
 	printf("\n");
 
-	LinearQueue Queue;
+	CircularQueue Queue;
 	Queue.front = 0;
 	Queue.rear = 0;
+	Queue.count = 0;
 
 	char Item = 'a';
-	Add_Linear_Queue(&Queue, Item);
-	Delete_Linear_Queue(&Queue);
+	Add_Circular_Queue(&Queue, Item);
+	Delete_Circular_Queue(&Queue);
 	printf("\n");
 
 	Item = 'b';
-	Add_Linear_Queue(&Queue, Item);
-	Delete_Linear_Queue(&Queue);
+	Add_Circular_Queue(&Queue, Item);
+	Delete_Circular_Queue(&Queue);
 	printf("\n");
+	system("pause");
 
 	Item = 'c';
-	Add_Linear_Queue(&Queue, Item);
-	Delete_Linear_Queue(&Queue);
+	Add_Circular_Queue(&Queue, Item);
+	Delete_Circular_Queue(&Queue);
 	printf("\n");
 
 	Item = 'd';
-	Add_Linear_Queue(&Queue, Item);
-	Delete_Linear_Queue(&Queue);
+	Add_Circular_Queue(&Queue, Item);
+	Delete_Circular_Queue(&Queue);
 	printf("\n");
 
-	Display_Linear_Queue(&Queue);
+	Display_Circular_Queue(&Queue);
 	printf("\n");
+	system("pause");
 
 	Item = 'e';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 	Item = 'f';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 	Item = 'g';
-	Add_Linear_Queue(&Queue, Item);
+	Add_Circular_Queue(&Queue, Item);
 
-	Display_Linear_Queue(&Queue);
+	Display_Circular_Queue(&Queue);
 
 	printf("\n");
 	system("pause");

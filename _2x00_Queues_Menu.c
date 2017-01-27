@@ -32,6 +32,7 @@ void _2x00_Queues_Menu() {
 		printf("*   Type Character + Enter                                                   *\n");
 		printf("*                                                                            *\n");
 		printf("*   A - Linear Queue (Fixed array)                                           *\n");
+		printf("*   B - Circular Queue (Fixed array)                                         *\n");
 		printf("*                                                                            *\n");
 		printf("*   Z - Return to Main Menu                                                  *\n");
 		printf("*   X - Exit the program.                                                    *\n");
@@ -50,7 +51,7 @@ void _2x00_Queues_Menu() {
 		if (Choice == 'a')
 			_2x01_Linear_Queue();
 		else if (Choice == 'b')
-			Choice = 'd';
+			_2x02_Circular_Queue();
 		else if (Choice == 'c')
 			Choice = 'd';
 		else if (Choice == 'd')

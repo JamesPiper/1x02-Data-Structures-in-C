@@ -9,6 +9,11 @@
 // Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 
+2017.01.27
+· Coding for circular queue using an array.
+  Similar to linear queue but can use any element in the array without
+  shifting the existing elements.
+
 2017.01.26
 · More unit testing for _0x02_InfixPostfixNotation.
 · The code has flaws but not going to bullet proof.

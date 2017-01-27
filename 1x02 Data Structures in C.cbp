@@ -62,6 +62,9 @@
 		<Unit filename="_2x01_Linear_Queue.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="_2x02_Circular_Queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="_Changes in 1x02 Data Structures in C.txt" />
 		<Extensions>
 			<code_completion />

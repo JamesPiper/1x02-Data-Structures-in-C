@@ -9,16 +9,16 @@
 // Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 
-#pragma once
+//#pragma once
 #include "1x02 Data Structures in C.h"
 
-//#ifndef QUEUE_FILE
-//#define QUEUE_FILE
+#ifndef QUEUE_FILE
+#define QUEUE_FILE
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Macros
 /////////////////////////////////////////////////////////////////////////////////////
-#define SIZE_OF_LINEAR_QUEUE 5
+#define SIZE_OF_ARRAY_QUEUE 5
 
 /////////////////////////////////////////////////////////////////////////////////////
 // User types.
@@ -26,15 +26,30 @@
 typedef struct LinearQueue
 {
   int front;
-  char item[SIZE_OF_LINEAR_QUEUE];
+  char item[SIZE_OF_ARRAY_QUEUE];
   int rear;
 } LinearQueue;
+
+typedef struct CircularQueue {
+	int count;
+	int front;
+	char item[SIZE_OF_ARRAY_QUEUE];
+	int rear;
+} CircularQueue;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes.
 /////////////////////////////////////////////////////////////////////////////////////
+// _2x01_Linear_Queue.cpp
 void Add_Linear_Queue(LinearQueue*, char);
 void Display_Linear_Queue(LinearQueue* queue);
 void Delete_Linear_Queue(LinearQueue* queue);
+// _2x01_Linear_Queue.cpp
 
-//#endif // QUEUE_FILE
+// _2x02_Circular_Queue.cpp
+void Add_Circular_Queue(CircularQueue*, char);
+void Display_Circular_Queue(CircularQueue* queue);
+void Delete_Circular_Queue(CircularQueue* queue);
+// _2x02_Circular_Queue.cpp
+
+#endif // QUEUE_FILE
