@@ -1,58 +1,40 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Project     : 1x02 Data Structures in C
 // Author      : James Piper, james@jamespiper.com
-// Date        : 2017.01.19
-// File        : _0x01_Stacks.h
-// Description : Stack data structure header file.
+// Date        : 2017.01.26
+// File        : _2x00_Queues.h
+// Description : Queue data structure header file.
 // IDE         : Code::Blocks 16.01
 // Compiler    : GCC
 // Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 
-//#pragma once
+#pragma once
+#include "1x02 Data Structures in C.h"
 
-#ifndef STACKS_FILE
-#define STACKS_FILE
+//#ifndef QUEUE_FILE
+//#define QUEUE_FILE
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Macros
 /////////////////////////////////////////////////////////////////////////////////////
-#define SIZE_OF_ARRAY_STACK 100
+#define SIZE_OF_LINEAR_QUEUE 5
 
 /////////////////////////////////////////////////////////////////////////////////////
 // User types.
 /////////////////////////////////////////////////////////////////////////////////////
-typedef struct _Stack {
-	int top;
-	int value[SIZE_OF_ARRAY_STACK];
-} Stack;
-
-typedef struct _CharStack {
-	int top;
-	char expression[SIZE_OF_ARRAY_STACK];
-} CharStack;
+typedef struct LinearQueue
+{
+  int front;
+  char item[SIZE_OF_LINEAR_QUEUE];
+  int rear;
+} LinearQueue;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes.
 /////////////////////////////////////////////////////////////////////////////////////
-// from _0x01_Stacks
-int Push(Stack*, int);
-int Pop(Stack*);
-int Peek(Stack*);
-Boolean IsEmpty(Stack*);
-Boolean IsFull(Stack*);
-void Display(Stack*);
-// end _0x01_Stacks
+void Add_Linear_Queue(LinearQueue*, char);
+void Display_Linear_Queue(LinearQueue* queue);
+void Delete_Linear_Queue(LinearQueue* queue);
 
-// from _0x02_Infix_Postfix_Notation
-Boolean Convert_Infix_To_Postfix(char*, CharStack*, CharStack*);
-int Priority(char);
-Boolean IsHigherOrEqual(int, int);
-int PushChar(CharStack*, char);
-char PopChar(CharStack*);
-char PeekChar(CharStack*);
-Boolean IsDigit(char);
-// end _0x02_Infix_Postfix_Notation
-
-#endif // STACKS_FILE
-
+//#endif // QUEUE_FILE

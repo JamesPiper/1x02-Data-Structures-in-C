@@ -13,7 +13,8 @@
 · More unit testing for _0x02_InfixPostfixNotation.
 · The code has flaws but not going to bullet proof.
 · Unit testing for _0x03_Evaluate_PostFix_Expression.
-
+· Adding templates for queue data structures.
+· Coding for linear queue using an array.
 
 2017.01.25
 · Unit testing for _0x02_InfixPostfixNotation.

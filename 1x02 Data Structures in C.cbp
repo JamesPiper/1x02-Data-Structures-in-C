@@ -42,14 +42,24 @@
 		<Unit filename="_0x00_MainMenu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="_0x01_Stacks.c">
+		<Unit filename="_1x00_Stacks.h" />
+		<Unit filename="_1x00_Stacks_Menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="_0x01_Stacks.h" />
-		<Unit filename="_0x02_Infix_Postfix_Notation.c">
+		<Unit filename="_1x01_Stacks.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="_0x03_Evaluate_PostFix_Expression.c">
+		<Unit filename="_1x02_Infix_Postfix_Notation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_1x03_Evaluate_PostFix_Expression.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_2x00_Queues.h" />
+		<Unit filename="_2x00_Queues_Menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="_2x01_Linear_Queue.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="_Changes in 1x02 Data Structures in C.txt" />

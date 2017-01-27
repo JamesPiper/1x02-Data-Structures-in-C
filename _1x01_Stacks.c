@@ -2,7 +2,7 @@
 // Project     : 1x02 Data Structures in C
 // Author      : James Piper, james@jamespiper.com
 // Date        : 2017.01.09
-// File        : _0x01_Stacks.c
+// File        : _1x01_Stacks.c
 // Description : Example code on a stack data structure.
 //             : Menu presented to Push, Pop, Peek and Display stack items.
 // IDE         : Code::Blocks 16.01
@@ -46,7 +46,7 @@
 // Include files
 /////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
-#include "_0x01_Stacks.h"
+#include "_1x00_Stacks.h"
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ void Use_Pop(Stack* stack);
 void Use_Peek(Stack* stack);
 
 // Part of header file for use by other files.
-//void Display(Stack*);
+//void Display_Stack(Stack*);
 //int Push(Stack*, int);
 //int Pop(Stack*);
 //int Peek(Stack*);
@@ -91,7 +91,7 @@ void TestCode_H_Stack();
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
-void _0x01_Stacks() {
+void _1x01_Stacks() {
 
 	char Choice;
 
@@ -121,8 +121,8 @@ void _0x01_Stacks() {
 		#endif
 		#undef DEBUG_101
 		printf("*                                                                            *\n");
+		printf("*   Z - Return to Stacks Menu                                                *\n");
 		printf("*   X - Exit                                                                 *\n");
-		printf("*   Z - Return                                                               *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
 		printf("\n");
@@ -139,7 +139,7 @@ void _0x01_Stacks() {
 		else if (Choice == 'c')
 			Use_Peek(&TheStack);
 		else if (Choice == 'd') {
-			Display(&TheStack);
+			Display_Stack(&TheStack);
 			system("pause");
 		} else if (Choice == 'e')
 			TestCode_E_Stack();
@@ -276,11 +276,11 @@ Boolean IsFull(Stack* stack) {
  		return False;
 }
 
-void Display(Stack* stack) {
+void Display_Stack(Stack* stack) {
 
 	printf("\n");
 	printf("------------------------------------------------------------------------------\n");
-	printf("Stacks Content\n");
+	printf("Stack Content\n");
 	printf("------------------------------------------------------------------------------\n");
 
 	if (IsEmpty(stack))
@@ -326,7 +326,7 @@ void TestCode_E_Stack() {
 	Push(&TheStack, Item);
 	printf("Item added at index %d: %9d\n", TheStack.top, Item);
 
-	Display(&TheStack);
+	Display_Stack(&TheStack);
 	system("pause");
 
 }
@@ -358,7 +358,7 @@ void TestCode_F_Stack() {
 	Push(&TheStack, Item);
 	printf("Item added at index %d: %9d\n", TheStack.top, Item);
 
-	Display(&TheStack);
+	Display_Stack(&TheStack);
 
 	printf("------------------------------------------------------------------------------\n");
 	printf("Pop Items From The Stack\n");
@@ -377,7 +377,7 @@ void TestCode_F_Stack() {
 	printf("Popped item : %9d \n", Item);
 	printf("Stack count : %9d \n", TheStack.top + 1);
 
-	Display(&TheStack);
+	Display_Stack(&TheStack);
 	system("pause");
 
 }
@@ -423,7 +423,6 @@ void TestCode_G_Stack() {
 	printf("Stack count  : %9d \n", TheStack.top + 1);
 	printf("\n");
 
-	//Display(&TheStack);
 	system("pause");
 
 }

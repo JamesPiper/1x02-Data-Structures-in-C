@@ -44,9 +44,11 @@ typedef enum Boolean { False, True } Boolean;
 // Function prototypes.
 /////////////////////////////////////////////////////////////////////////////////////
 void _0x00_MainMenu();
-void _0x01_Stacks();
-void _0x02_Infix_Postfix_Notation();
-void _0x03_Evaluate_PostFix_Expression();
+
+void _1x00_Stacks_Menu();
+void _1x01_Stacks();
+void _1x02_Infix_Postfix_Notation();
+void _1x03_Evaluate_PostFix_Expression();
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Library function prototypes.

@@ -10,7 +10,7 @@
 // Language    : C (ISO 11)
 /////////////////////////////////////////////////////////////////////////////////////
 //
-// Using stack functions from _0x01_Stacks.h instead of typing in here.
+// Using stack functions from _1x00_Stacks.h instead of typing in here.
 // Except there are based on int data and this code requires char.
 //
 // Running into problems getting postfix expression.
@@ -24,23 +24,23 @@
 // Include files
 /////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
-#include "_0x01_Stacks.h"
+#include "_1x00_Stacks.h"
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Macros
 /////////////////////////////////////////////////////////////////////////////////////
-// see _0x01_Stacks.h
+// see _1x00_Stacks.h
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Structures & Typedefs
 /////////////////////////////////////////////////////////////////////////////////////
-// see _0x01_Stacks.h
+// see _1x00_Stacks.h
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
 /////////////////////////////////////////////////////////////////////////////////////
-// see _0x01_Stacks.h
+// see _1x00_Stacks.h
 void Process_Postfix_Evaluation();
 int Evaluate_PostFix_Expression(char*, Boolean*);
 void GetNumber(char*, int, char*);
@@ -53,7 +53,7 @@ void TestCode_E_Evaluate_PostFix_Expression();
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
-void _0x03_Evaluate_PostFix_Expression() {
+void _1x03_Evaluate_PostFix_Expression() {
 
 	char Choice;
 
@@ -77,8 +77,8 @@ void _0x03_Evaluate_PostFix_Expression() {
 		#endif
 		#undef DEBUG_103
 		printf("*                                                                            *\n");
+		printf("*   Z - Return to Stacks Menu                                                *\n");
 		printf("*   X - Exit                                                                 *\n");
-		printf("*   Z - Return                                                               *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
 		printf("\n");

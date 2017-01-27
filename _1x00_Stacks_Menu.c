@@ -2,7 +2,7 @@
 // Project     : 1x02 Data Structures in C
 // Author      : James Piper, james@jamespiper.com
 // Date        : 2017.01.17
-// File        : _0x00_MainMenu.c
+// File        : _1x00_Stacks_Menu.c
 // Description : Terminal style main menu for user.
 //             : Starting point for the user.
 // IDE         : Code::Blocks 16.01
@@ -19,7 +19,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
-void _0x00_MainMenu() {
+void _1x00_Stacks_Menu() {
 
 	char Choice;
 
@@ -27,21 +27,16 @@ void _0x00_MainMenu() {
 	{
 		printf("******************************************************************************\n");
 		printf("*                                                                            *\n");
-		printf("*   Beginning Data Structures in C                                           *\n");
+		printf("*   Stack Data Structure in C                                                *\n");
 		printf("*   Main Menu                                                                *\n");
 		printf("*                                                                            *\n");
 		printf("*   Type Character + Enter                                                   *\n");
 		printf("*                                                                            *\n");
-		printf("*   A - Stacks                                                               *\n");
-		printf("*   B - Queues                                                               *\n");
-		printf("*   C - Recursion                                                            *\n");
-		printf("*   D - Linked Lists                                                         *\n");
-		printf("*   E - Queues and Stacks with Linked Lists                                  *\n");
-		printf("*   F - Trees                                                                *\n");
-		printf("*   G - Graphs                                                               *\n");
-		printf("*   H - Searching                                                            *\n");
-		printf("*   I - Sorting                                                              *\n");
+		printf("*   A - Stack (Fixed array)                                                  *\n");
+		printf("*   B - Infix to Postfix Notation                                            *\n");
+		printf("*   C - Evalaute Postfix Expression                                          *\n");
 		printf("*                                                                            *\n");
+		printf("*   Z - Return to Main Menu                                                  *\n");
 		printf("*   X - Exit the program.                                                    *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
@@ -56,23 +51,15 @@ void _0x00_MainMenu() {
 		printf("\n");
 
 		if (Choice == 'a')
-			_1x00_Stacks_Menu();
+			_1x01_Stacks();
 		else if (Choice == 'b')
-			_2x00_Queues_Menu();
+			_1x02_Infix_Postfix_Notation();
 		else if (Choice == 'c')
-			Choice = 'c';
+			_1x03_Evaluate_PostFix_Expression();
 		else if (Choice == 'd')
 			Choice = 'd';
-		else if (Choice == 'e')
-			Choice = 'e';
-		else if (Choice == 'f')
-			Choice = 'f';
-		else if (Choice == 'g')
-			Choice = 'g';
-		else if (Choice == 'h')
-			Choice = 'h';
-		else if (Choice == 'i')
-			Choice = 'i';
+		else if (Choice == 'z')
+			return;
 		else if (Choice != 'x') {
 			printf("*** Select a choice from those listed. ****\n\n");
 			system("pause");

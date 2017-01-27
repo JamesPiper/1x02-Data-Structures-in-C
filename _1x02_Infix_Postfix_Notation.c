@@ -39,7 +39,7 @@
 // 3. Uses switch statement. Not structured programming b/c of break;
 //    I should change to use if...else.
 //
-// 4. The code in _0x01_Stacks creates an int stack.
+// 4. The code in _1x00_Stacks creates an int stack.
 //    This code uses a char stack.
 //    C isn't designed for overloading so need to distinguish
 //    between a char stack and int stack.
@@ -50,19 +50,19 @@
 // Include files
 /////////////////////////////////////////////////////////////////////////////////////
 #include "1x02 Data Structures in C.h"
-#include "_0x01_Stacks.h"
+#include "_1x00_Stacks.h"
 /////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Macros
 /////////////////////////////////////////////////////////////////////////////////////
 // Moved to main header file (1x02 Data Structures in C.h).
-// see _0x01_Stacks.h
+// see _1x00_Stacks.h
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Structures & Typedefs
 /////////////////////////////////////////////////////////////////////////////////////
-// see _0x01_Stacks.h
+// see _1x00_Stacks.h
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Function prototypes
@@ -85,7 +85,7 @@ void TestCode_E_Infix_Postfix_Notation();
 /////////////////////////////////////////////////////////////////////////////////////
 // Main function
 /////////////////////////////////////////////////////////////////////////////////////
-void _0x02_Infix_Postfix_Notation() {
+void _1x02_Infix_Postfix_Notation() {
 
 	char Choice;
 
@@ -109,8 +109,8 @@ void _0x02_Infix_Postfix_Notation() {
 		#endif
 		#undef DEBUG_102
 		printf("*                                                                            *\n");
+		printf("*   Z - Return to Stacks Menu                                                *\n");
 		printf("*   X - Exit                                                                 *\n");
-		printf("*   Z - Return                                                               *\n");
 		printf("*                                                                            *\n");
 		printf("******************************************************************************\n");
 		printf("\n");

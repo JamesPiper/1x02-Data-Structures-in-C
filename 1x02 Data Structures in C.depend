@@ -85,7 +85,7 @@
 1485378131 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c (library).c
 	"1x02 Data Structures in C.h"
 
-1485377095 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c.h
+1485462376 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c.h
 	<stdlib.h>
 	<stdio.h>
 	<ctype.h>
@@ -95,7 +95,7 @@
 1485372203 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\1x02 data structures in c (main).c
 	"1x02 Data Structures in C.h"
 
-1485378190 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_0x00_mainmenu.c
+1485502127 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_0x00_mainmenu.c
 	"1x02 Data Structures in C.h"
 
 1485378531 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_0x01_stacks.c
@@ -131,4 +131,26 @@
 1485377088 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_0x03_evaluate_postfix_expression.c
 	"1x02 Data Structures in C.h"
 	"_0x01_Stacks.h"
+
+1485500082 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x01_stacks.c
+	"1x02 Data Structures in C.h"
+	"_1x00_Stacks.h"
+
+1485461506 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x01_stacks.h
+
+1485464069 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x02_infix_postfix_notation.c
+	"1x02 Data Structures in C.h"
+	"_1x00_Stacks.h"
+
+1485464069 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x03_evaluate_postfix_expression.c
+	"1x02 Data Structures in C.h"
+	"_1x00_Stacks.h"
+
+1485465132 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x00_stacks_menu.c
+	"1x02 Data Structures in C.h"
+
+1485496084 c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_1x00_stacks.h
+
+1485502139 source:c:\users\james\documents\visual studio 2012\1x01 c fundamentals\1x02 data structures in c (code blocks)\_2x00_queues_menu.c
+	"1x02 Data Structures in C.h"
 
